@@ -99,6 +99,7 @@ namespace POS
 					case Keys.PageUp:
 					case Keys.End:
 					case Keys.Home:
+					
 						break;
 					case Keys.Subtract:
 					case Keys.OemMinus:

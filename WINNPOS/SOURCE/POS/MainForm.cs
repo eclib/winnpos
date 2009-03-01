@@ -66,12 +66,12 @@ namespace POS
 		
 		void MainFormResize(object sender, EventArgs e)
 		{
-				double ancho = dataGridView1.Width;
-				dataGridView1.Columns[0].Width = (int)(ancho * 0.05);
-				dataGridView1.Columns[1].Width = (int)(ancho * 0.22);
-				dataGridView1.Columns[2].Width = (int)(ancho * 0.53);
-				dataGridView1.Columns[3].Width = (int)(ancho * 0.10);
-				dataGridView1.Columns[4].Width = (int)(ancho * 0.10);
+			double ancho = dataGridView1.Width;
+			dataGridView1.Columns[0].Width = (int)(ancho * 0.05);
+			dataGridView1.Columns[1].Width = (int)(ancho * 0.22);
+			dataGridView1.Columns[2].Width = (int)(ancho * 0.53);
+			dataGridView1.Columns[3].Width = (int)(ancho * 0.10);
+			dataGridView1.Columns[4].Width = (int)(ancho * 0.10);
 			int pos=0;
 			dataGridView1.Size = new Size(this.Size.Width-30    , this.Size.Height-250);
 			pos                = dataGridView1.Size.Height+dataGridView1.Location.Y-1;
@@ -110,6 +110,10 @@ namespace POS
 						this.masuno();
 						break;
 					case Keys.Escape:
+						this.Cancela();
+						break;
+					case Keys.Enter:
+						dataGridView1.Columns[1].ReadOnly = true;
 						break;
 					case Keys.F2:
 						break;
@@ -127,7 +131,7 @@ namespace POS
 						break;
 					default:
 						try{
-//							MessageBox.Show(e.KeyCode.ToString());
+							//MessageBox.Show(e.KeyCode.ToString());
 							string car = e.KeyCode.ToString();
 							if ((car.Length==2 && car.Substring(0,1).Equals("D")) ){
 								car = car.Substring(1,1);
@@ -140,6 +144,7 @@ namespace POS
 							int keyint = (int)Convert.ToChar(car);
 							if (keyint >= 48 && keyint <= 122){
 								dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Selected = true;
+								dataGridView1.Columns[1].ReadOnly = false;
 								SendKeys.Flush();
 								SendKeys.Send(car);
 							}
@@ -149,7 +154,15 @@ namespace POS
 						break;
 			}
 		}
-		
+
+		void Cancela(){
+			dataGridView1.Rows.Clear();
+			for(int i=0; i<100; i++){
+				dataGridView1.Rows.Add();
+				dataGridView1.Rows[dataGridView1.Rows.Count-1].HeaderCell.Value=1;
+				dataGridView1.RowHeadersVisible = false;
+			}
+		}
 		void masuno(){
 			int Y = dataGridView1.CurrentRow.Index;
 			try{
@@ -173,6 +186,11 @@ namespace POS
 			}catch(System.NullReferenceException){
 				dataGridView1.Rows[Y].Cells[0].Value = 0;							
 			}
+		}
+		
+		void DataGridView1CellLeave(object sender, DataGridViewCellEventArgs e)
+		{
+			dataGridView1.Columns[1].ReadOnly = true;
 		}
 	}
 }

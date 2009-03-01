@@ -117,6 +117,7 @@ namespace POS
 			this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dataGridView1.Size = new System.Drawing.Size(1075, 396);
 			this.dataGridView1.TabIndex = 0;
+			this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellLeave);
 			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
 			// 
 			// CANT
@@ -135,6 +136,7 @@ namespace POS
 			this.CODART.HeaderText = "CODIGO ARTICULOS";
 			this.CODART.MaxInputLength = 13;
 			this.CODART.Name = "CODART";
+			this.CODART.ReadOnly = true;
 			// 
 			// Desc
 			// 

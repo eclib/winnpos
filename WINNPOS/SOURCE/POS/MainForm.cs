@@ -192,5 +192,12 @@ namespace POS
 		{
 			dataGridView1.Columns[1].ReadOnly = true;
 		}
+		
+		void MainFormKeyDown(object sender, KeyEventArgs e)
+		{
+			if (dataGridView1.Columns[1].ReadOnly == false & e.KeyCode==Keys.F2){
+				MessageBox.Show("3");
+			}
+		}
 	}
 }

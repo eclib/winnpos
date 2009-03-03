@@ -1,11 +1,11 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{292B30E6-7DC2-46F5-B6DA-222ECF4399A4}</ProjectGuid>
+    <ProjectGuid>{655466E5-B577-42D9-A63F-F0EE4695931C}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>POS</RootNamespace>
-    <AssemblyName>POS</AssemblyName>
+    <RootNamespace>POSinnovic</RootNamespace>
+    <AssemblyName>POSinnovic</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -25,38 +25,33 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="negocio">
-      <HintPath>bin\Debug\negocio.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Rutinas">
-      <HintPath>..\..\..\..\Rutinas\bin\Debug\Rutinas.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management">
-      <HintPath>bin\Debug\System.Management.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="MainForm.cs" />
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Busqueda.cs" />
+    <Compile Include="Busqueda.Designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CierreVenta.cs" />
+    <Compile Include="CierreVenta.Designer.cs">
+      <DependentUpon>CierreVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuarios.cs" />
+    <Compile Include="impresion.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POS.cs" />
+    <Compile Include="POS.Designer.cs">
+      <DependentUpon>POS.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Rutinas.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Terminar.cs" />
   </ItemGroup>
 </Project>

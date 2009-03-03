@@ -115,6 +115,7 @@ namespace POS
 			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView1.Size = new System.Drawing.Size(1075, 396);
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellLeave);
@@ -388,6 +389,7 @@ namespace POS
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.label12);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";
@@ -395,6 +397,7 @@ namespace POS
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Activated += new System.EventHandler(this.MainFormActivated);
 			this.Resize += new System.EventHandler(this.MainFormResize);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.panel1.ResumeLayout(false);

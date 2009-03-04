@@ -25,6 +25,8 @@ namespace POSinnovic
 			bool salida = false;
 			negocio neg = new negocio();
 			neg.db      = "innpos_pos";
+			neg.user    = "innovic";
+			neg.pass    = "1nn0v1c";
 			MySqlDataReader reader = neg.select("select * from pos_usuario where usuario='"+this.usuario+"' and password='"+this.password+"'");
 			if (reader.Read()){
 				salida = true;

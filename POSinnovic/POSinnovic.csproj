@@ -30,7 +30,7 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Negocio">
-      <HintPath>..\..\Negocio\bin\Debug\Negocio.dll</HintPath>
+      <HintPath>bin\Debug\Negocio.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />

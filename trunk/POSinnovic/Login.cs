@@ -30,5 +30,18 @@ namespace POSinnovic
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		
+		void Button2Click(object sender, EventArgs e)
+		{
+			ControlUsuarios CTRL = new ControlUsuarios();
+			if (CTRL.check(this.textBox1.Text,this.textBox2.Text)){
+				POS FrmPOS = new POS();
+				FrmPOS.Show();
+				this.Visible=false;
+			}else{
+				this.textBox1.Text="";
+				this.textBox2.Text="";
+			}
+		}
 	}
 }

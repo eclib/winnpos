@@ -24,8 +24,8 @@ namespace POS
 
 		public string exSQL( string sSQL )
 		{
-			negocio neg2 = new negocio();
-			string sSalida = "";
+			negocio neg2           = new negocio();
+			string sSalida         = "";
 		   	MySqlDataReader reader = neg2.select(sSQL);
 		   	if (reader.Read())
 		   	{

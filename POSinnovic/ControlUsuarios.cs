@@ -8,6 +8,8 @@
  */
 
 using System;
+using MySql.Data.MySqlClient;
+using Negocio;
 
 namespace POSinnovic
 {
@@ -16,8 +18,29 @@ namespace POSinnovic
 	/// </summary>
 	public class ControlUsuarios
 	{
-		public ControlUsuarios()
-		{
+		public string usuario  = "";
+		public string password = "";
+		
+		public bool check(){
+			bool salida = false;
+			negocio neg = new negocio();
+			neg.db      = "innpos_pos";
+			MySqlDataReader reader = neg.select("select * from pos_usuario where usuario='"+this.usuario+"' and password='"+this.password+"'");
+			if (reader.Read()){
+				salida = true;
+			}
+			return salida;
+		}
+
+		public bool check(string usr, string pass){
+			bool salida = false;
+			negocio neg = new negocio();
+			neg.db      = "innpos_pos";
+			MySqlDataReader reader = neg.select("select * from pos_usuario where usuario='"+usr+"' and password='"+pass+"'");
+			if (reader.Read()){
+				salida = true;
+			}
+			return salida;
 		}
 	}
 }

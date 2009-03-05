@@ -1,0 +1,10 @@
+bin\Debug\POS.exe
+bin\Debug\POS.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\POS.MantSucursales.resources
+obj\Debug\POS.csproj.GenerateResource.Cache
+obj\Debug\POS.exe
+obj\Debug\POS.pdb
+obj\Debug\POS.MantPOS.resources
+obj\Debug\POS.MantUsuarios.resources
+obj\Debug\POS.MantParam.resources

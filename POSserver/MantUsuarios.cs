@@ -12,7 +12,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace POS
+namespace POSserver
 {
 	/// <summary>
 	/// Description of MantUsuarios.

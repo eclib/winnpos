@@ -1,11 +1,11 @@
-/* Innovic 2009 - Winnpos */
+/* Innovic 2009 - WinnPOSserver */
 
 using System;
 using System.Data;
 using MySql.Data.MySqlClient; 
 using System.Windows.Forms;
 
-namespace POS
+namespace POSserver
 {
 	/// <summary>
 	/// Description of negocio.
@@ -18,7 +18,7 @@ namespace POS
 		MySqlDataReader	reader;
 		
 		string server	= "localhost";
-		string db		= "innpos_server";
+		string db		= "innPOS_server";
 		string user		= "root";
 		string pass		= "12345";
 		string port		= "3306";

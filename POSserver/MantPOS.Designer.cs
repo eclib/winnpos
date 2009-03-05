@@ -6,9 +6,9 @@
  * 
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
-namespace POS
+namespace POSserver
 {
-	partial class MantPOS
+	partial class MantPOSserver
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -18,15 +18,15 @@ namespace POS
 		/// <summary>
 		/// Disposes resources used by the form.
 		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
+		/// <param name="disPOSservering">true if managed resources should be Disposed; otherwise, false.</param>
+		protected override void Dispose(bool disPOSservering)
 		{
-			if (disposing) {
+			if (disPOSservering) {
 				if (components != null) {
 					components.Dispose();
 				}
 			}
-			base.Dispose(disposing);
+			base.Dispose(disPOSservering);
 		}
 		
 		/// <summary>
@@ -38,26 +38,26 @@ namespace POS
 		{
 			this.button_salir = new System.Windows.Forms.Button();
 			this.button_eliminar = new System.Windows.Forms.Button();
-			this.grilla_poss = new System.Windows.Forms.DataGridView();
+			this.grilla_POSservers = new System.Windows.Forms.DataGridView();
 			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.button_nuevo = new System.Windows.Forms.Button();
 			this.button_grabar = new System.Windows.Forms.Button();
-			this.groupBox_poss = new System.Windows.Forms.GroupBox();
-			this.groupBox_pos = new System.Windows.Forms.GroupBox();
+			this.groupBox_POSservers = new System.Windows.Forms.GroupBox();
+			this.groupBox_POSserver = new System.Windows.Forms.GroupBox();
 			this.textBox_codigo = new System.Windows.Forms.TextBox();
 			this.label_2puntos3 = new System.Windows.Forms.Label();
 			this.label_codigo = new System.Windows.Forms.Label();
 			this.textBox_sucursal = new System.Windows.Forms.TextBox();
 			this.label_2puntos2 = new System.Windows.Forms.Label();
 			this.label_sucursal = new System.Windows.Forms.Label();
-			this.textBox_idPos = new System.Windows.Forms.TextBox();
+			this.textBox_idPOSserver = new System.Windows.Forms.TextBox();
 			this.label_2puntos1 = new System.Windows.Forms.Label();
-			this.label_idPos = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.grilla_poss)).BeginInit();
-			this.groupBox_poss.SuspendLayout();
-			this.groupBox_pos.SuspendLayout();
+			this.label_idPOSserver = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.grilla_POSservers)).BeginInit();
+			this.groupBox_POSservers.SuspendLayout();
+			this.groupBox_POSserver.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button_salir
@@ -81,24 +81,24 @@ namespace POS
 			this.button_eliminar.UseVisualStyleBackColor = true;
 			this.button_eliminar.Click += new System.EventHandler(this.Button_eliminarClick);
 			// 
-			// grilla_poss
+			// grilla_POSservers
 			// 
-			this.grilla_poss.AllowUserToAddRows = false;
-			this.grilla_poss.AllowUserToOrderColumns = true;
-			this.grilla_poss.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.grilla_poss.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.grilla_poss.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.grilla_POSservers.AllowUserToAddRows = false;
+			this.grilla_POSservers.AllowUserToOrderColumns = true;
+			this.grilla_POSservers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.grilla_POSservers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.grilla_POSservers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
 									this.Id,
 									this.Sucursal,
 									this.Codigo});
-			this.grilla_poss.Location = new System.Drawing.Point(6, 19);
-			this.grilla_poss.MultiSelect = false;
-			this.grilla_poss.Name = "grilla_poss";
-			this.grilla_poss.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.grilla_poss.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.grilla_poss.Size = new System.Drawing.Size(759, 154);
-			this.grilla_poss.TabIndex = 3;
-			this.grilla_poss.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Selecciona_Fila);
+			this.grilla_POSservers.Location = new System.Drawing.Point(6, 19);
+			this.grilla_POSservers.MultiSelect = false;
+			this.grilla_POSservers.Name = "grilla_POSservers";
+			this.grilla_POSservers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.grilla_POSservers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.grilla_POSservers.Size = new System.Drawing.Size(759, 154);
+			this.grilla_POSservers.TabIndex = 3;
+			this.grilla_POSservers.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Selecciona_Fila);
 			// 
 			// Id
 			// 
@@ -137,37 +137,37 @@ namespace POS
 			this.button_grabar.UseVisualStyleBackColor = true;
 			this.button_grabar.Click += new System.EventHandler(this.Button_grabarClick);
 			// 
-			// groupBox_poss
+			// groupBox_POSservers
 			// 
-			this.groupBox_poss.Controls.Add(this.grilla_poss);
-			this.groupBox_poss.Location = new System.Drawing.Point(12, 239);
-			this.groupBox_poss.Name = "groupBox_poss";
-			this.groupBox_poss.Size = new System.Drawing.Size(771, 189);
-			this.groupBox_poss.TabIndex = 3;
-			this.groupBox_poss.TabStop = false;
-			this.groupBox_poss.Text = "POSs";
+			this.groupBox_POSservers.Controls.Add(this.grilla_POSservers);
+			this.groupBox_POSservers.Location = new System.Drawing.Point(12, 239);
+			this.groupBox_POSservers.Name = "groupBox_POSservers";
+			this.groupBox_POSservers.Size = new System.Drawing.Size(771, 189);
+			this.groupBox_POSservers.TabIndex = 3;
+			this.groupBox_POSservers.TabStop = false;
+			this.groupBox_POSservers.Text = "POSservers";
 			// 
-			// groupBox_pos
+			// groupBox_POSserver
 			// 
-			this.groupBox_pos.Controls.Add(this.button_salir);
-			this.groupBox_pos.Controls.Add(this.button_eliminar);
-			this.groupBox_pos.Controls.Add(this.button_grabar);
-			this.groupBox_pos.Controls.Add(this.button_nuevo);
-			this.groupBox_pos.Controls.Add(this.textBox_codigo);
-			this.groupBox_pos.Controls.Add(this.label_2puntos3);
-			this.groupBox_pos.Controls.Add(this.label_codigo);
-			this.groupBox_pos.Controls.Add(this.textBox_sucursal);
-			this.groupBox_pos.Controls.Add(this.label_2puntos2);
-			this.groupBox_pos.Controls.Add(this.label_sucursal);
-			this.groupBox_pos.Controls.Add(this.textBox_idPos);
-			this.groupBox_pos.Controls.Add(this.label_2puntos1);
-			this.groupBox_pos.Controls.Add(this.label_idPos);
-			this.groupBox_pos.Location = new System.Drawing.Point(12, 12);
-			this.groupBox_pos.Name = "groupBox_pos";
-			this.groupBox_pos.Size = new System.Drawing.Size(771, 220);
-			this.groupBox_pos.TabIndex = 2;
-			this.groupBox_pos.TabStop = false;
-			this.groupBox_pos.Text = "Datos POS";
+			this.groupBox_POSserver.Controls.Add(this.button_salir);
+			this.groupBox_POSserver.Controls.Add(this.button_eliminar);
+			this.groupBox_POSserver.Controls.Add(this.button_grabar);
+			this.groupBox_POSserver.Controls.Add(this.button_nuevo);
+			this.groupBox_POSserver.Controls.Add(this.textBox_codigo);
+			this.groupBox_POSserver.Controls.Add(this.label_2puntos3);
+			this.groupBox_POSserver.Controls.Add(this.label_codigo);
+			this.groupBox_POSserver.Controls.Add(this.textBox_sucursal);
+			this.groupBox_POSserver.Controls.Add(this.label_2puntos2);
+			this.groupBox_POSserver.Controls.Add(this.label_sucursal);
+			this.groupBox_POSserver.Controls.Add(this.textBox_idPOSserver);
+			this.groupBox_POSserver.Controls.Add(this.label_2puntos1);
+			this.groupBox_POSserver.Controls.Add(this.label_idPOSserver);
+			this.groupBox_POSserver.Location = new System.Drawing.Point(12, 12);
+			this.groupBox_POSserver.Name = "groupBox_POSserver";
+			this.groupBox_POSserver.Size = new System.Drawing.Size(771, 220);
+			this.groupBox_POSserver.TabIndex = 2;
+			this.groupBox_POSserver.TabStop = false;
+			this.groupBox_POSserver.Text = "Datos POSserver";
 			// 
 			// textBox_codigo
 			// 
@@ -215,12 +215,12 @@ namespace POS
 			this.label_sucursal.TabIndex = 3;
 			this.label_sucursal.Text = "Sucursal";
 			// 
-			// textBox_idPos
+			// textBox_idPOSserver
 			// 
-			this.textBox_idPos.Location = new System.Drawing.Point(118, 31);
-			this.textBox_idPos.Name = "textBox_idPos";
-			this.textBox_idPos.Size = new System.Drawing.Size(146, 20);
-			this.textBox_idPos.TabIndex = 2;
+			this.textBox_idPOSserver.Location = new System.Drawing.Point(118, 31);
+			this.textBox_idPOSserver.Name = "textBox_idPOSserver";
+			this.textBox_idPOSserver.Size = new System.Drawing.Size(146, 20);
+			this.textBox_idPOSserver.TabIndex = 2;
 			// 
 			// label_2puntos1
 			// 
@@ -230,46 +230,46 @@ namespace POS
 			this.label_2puntos1.TabIndex = 1;
 			this.label_2puntos1.Text = ":";
 			// 
-			// label_idPos
+			// label_idPOSserver
 			// 
-			this.label_idPos.Location = new System.Drawing.Point(6, 31);
-			this.label_idPos.Name = "label_idPos";
-			this.label_idPos.Size = new System.Drawing.Size(89, 20);
-			this.label_idPos.TabIndex = 0;
-			this.label_idPos.Text = "ID POS";
+			this.label_idPOSserver.Location = new System.Drawing.Point(6, 31);
+			this.label_idPOSserver.Name = "label_idPOSserver";
+			this.label_idPOSserver.Size = new System.Drawing.Size(89, 20);
+			this.label_idPOSserver.TabIndex = 0;
+			this.label_idPOSserver.Text = "ID POSserver";
 			// 
-			// MantPOS
+			// MantPOSserver
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(795, 440);
-			this.Controls.Add(this.groupBox_poss);
-			this.Controls.Add(this.groupBox_pos);
-			this.Name = "MantPOS";
-			this.Text = "Mantenedor de POSs";
-			((System.ComponentModel.ISupportInitialize)(this.grilla_poss)).EndInit();
-			this.groupBox_poss.ResumeLayout(false);
-			this.groupBox_pos.ResumeLayout(false);
-			this.groupBox_pos.PerformLayout();
+			this.Controls.Add(this.groupBox_POSservers);
+			this.Controls.Add(this.groupBox_POSserver);
+			this.Name = "MantPOSserver";
+			this.Text = "Mantenedor de POSservers";
+			((System.ComponentModel.ISupportInitialize)(this.grilla_POSservers)).EndInit();
+			this.groupBox_POSservers.ResumeLayout(false);
+			this.groupBox_POSserver.ResumeLayout(false);
+			this.groupBox_POSserver.PerformLayout();
 			this.ResumeLayout(false);
 		}
 		private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-		private System.Windows.Forms.Label label_idPos;
+		private System.Windows.Forms.Label label_idPOSserver;
 		private System.Windows.Forms.Label label_2puntos1;
-		private System.Windows.Forms.TextBox textBox_idPos;
+		private System.Windows.Forms.TextBox textBox_idPOSserver;
 		private System.Windows.Forms.Label label_sucursal;
 		private System.Windows.Forms.Label label_2puntos2;
 		private System.Windows.Forms.TextBox textBox_sucursal;
 		private System.Windows.Forms.Label label_codigo;
 		private System.Windows.Forms.Label label_2puntos3;
 		private System.Windows.Forms.TextBox textBox_codigo;
-		private System.Windows.Forms.GroupBox groupBox_pos;
-		private System.Windows.Forms.GroupBox groupBox_poss;
+		private System.Windows.Forms.GroupBox groupBox_POSserver;
+		private System.Windows.Forms.GroupBox groupBox_POSservers;
 		private System.Windows.Forms.Button button_grabar;
 		private System.Windows.Forms.Button button_nuevo;
-		private System.Windows.Forms.DataGridView grilla_poss;
+		private System.Windows.Forms.DataGridView grilla_POSservers;
 		private System.Windows.Forms.Button button_eliminar;
 		private System.Windows.Forms.Button button_salir;
 	}

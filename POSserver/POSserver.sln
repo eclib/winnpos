@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 # SharpDevelop 2.2.1.2648
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS", "POS.csproj", "{104B693A-8A43-47D1-8FAD-28DB0D32D986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSserver", "POSserver.csproj", "{104B693A-8A43-47D1-8FAD-28DB0D32D986}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

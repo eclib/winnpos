@@ -10,7 +10,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace POS
+namespace POSserver
 {
 	/// <summary>
 	/// Class with program entry point.

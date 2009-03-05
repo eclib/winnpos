@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace POS
+namespace POSserver
 {
 	/// <summary>
 	/// Description of MainForm.
@@ -30,10 +30,10 @@ namespace POS
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 			
-			//POS.MantSucursales xx = new MantSucursales();
-			//POS.MantUsuarios xx = new MantUsuarios();
-			//POS.MantPOS xx = 	new MantPOS();
-			POS.MantParam xx = 	new MantParam();
+			//POSserver.MantSucursales xx = new MantSucursales();
+			//POSserver.MantUsuarios xx = new MantUsuarios();
+			//POSserver.MantPOSserver xx = 	new MantPOSserver();
+			POSserver.MantParam xx = 	new MantParam();
 			xx.Show();
 			this.Hide();
 		}

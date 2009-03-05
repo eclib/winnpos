@@ -6,7 +6,7 @@
  * 
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
-namespace POS
+namespace POSserver
 {
 	partial class MantUsuarios
 	{
@@ -18,15 +18,15 @@ namespace POS
 		/// <summary>
 		/// Disposes resources used by the form.
 		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
+		/// <param name="disPOSservering">true if managed resources should be Disposed; otherwise, false.</param>
+		protected override void Dispose(bool disPOSservering)
 		{
-			if (disposing) {
+			if (disPOSservering) {
 				if (components != null) {
 					components.Dispose();
 				}
 			}
-			base.Dispose(disposing);
+			base.Dispose(disPOSservering);
 		}
 		
 		/// <summary>

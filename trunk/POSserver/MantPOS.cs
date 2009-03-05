@@ -12,12 +12,12 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace POS
+namespace POSserver
 {
 	/// <summary>
-	/// Description of MantPOS.
+	/// Description of MantPOSserver.
 	/// </summary>
-	public partial class MantPOS : Form
+	public partial class MantPOSserver : Form
 	{
 		private string	query;
 		private string	query2;
@@ -34,7 +34,7 @@ namespace POS
 		private	int		status; 		// Bandera para el boton grabar.
 		private string	varExiste;
 		
-		public MantPOS()
+		public MantPOSserver()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -48,7 +48,7 @@ namespace POS
 			status = 0;
 			
 			query	= " SELECT ID AS ID, SUCURSAL AS SUCURSAL, CODIGO AS CODIGO FROM pos_pos ORDER BY SUCURSAL ASC ";
-			query2	= " SELECT COUNT(*) AS CANTFILAS FROM pos_pos ";
+			query2	= " SELECT COUNT(*) AS CANTFILAS FROM POS_POS ";
 			
 			negocio neg				= new negocio();
 			negocio neg2			= new negocio();
@@ -72,10 +72,10 @@ namespace POS
 					button_nuevo.Enabled		= true;
 					button_grabar.Enabled		= true;
 					button_eliminar.Enabled		= true;
-					this.grilla_poss.Rows.Add();
-					this.grilla_poss.Rows[contFilas].Cells[0].Value	= varId;
-					this.grilla_poss.Rows[contFilas].Cells[2].Value	= varSucursal;
-					this.grilla_poss.Rows[contFilas].Cells[1].Value	= varCodigo;
+					this.grilla_POSservers.Rows.Add();
+					this.grilla_POSservers.Rows[contFilas].Cells[0].Value	= varId;
+					this.grilla_POSservers.Rows[contFilas].Cells[2].Value	= varSucursal;
+					this.grilla_POSservers.Rows[contFilas].Cells[1].Value	= varCodigo;
 					contFilas = contFilas + 1;
 				} while(reader.Read() && contFilas <= maxFilas);
 			}else{
@@ -93,7 +93,7 @@ namespace POS
 		void Button_nuevoClick(object sender, EventArgs e)
 		{
 			// TextBox 
-			textBox_idPos.Text		= "0";
+			textBox_idPOSserver.Text		= "0";
 			textBox_sucursal.Text	= "";
 			textBox_codigo.Text		= "0";
 			// Botones de Acción.
@@ -121,9 +121,9 @@ namespace POS
 			Fila = e.RowIndex;
 
 			if(status != 1){
-				textBox_idPos.Text		= grilla_poss.Rows[Fila].Cells[0].Value.ToString();
-				textBox_sucursal.Text	= grilla_poss.Rows[Fila].Cells[1].Value.ToString();
-				textBox_codigo.Text		= grilla_poss.Rows[Fila].Cells[2].Value.ToString();
+				textBox_idPOSserver.Text		= grilla_POSservers.Rows[Fila].Cells[0].Value.ToString();
+				textBox_sucursal.Text	= grilla_POSservers.Rows[Fila].Cells[1].Value.ToString();
+				textBox_codigo.Text		= grilla_POSservers.Rows[Fila].Cells[2].Value.ToString();
 			}else{
 				status = 0;
 			}
@@ -136,7 +136,7 @@ namespace POS
 		
 		void Button_grabarClick(object sender, EventArgs e)
 		{
-			varId			= int.Parse(textBox_idPos.Text);			
+			varId			= int.Parse(textBox_idPOSserver.Text);			
 			varSucursal		= textBox_sucursal.Text;
 			varCodigo		= int.Parse(textBox_codigo.Text);
 			status			= 1;
@@ -202,7 +202,7 @@ namespace POS
 				neg2.cerrar();
 			}
 			
-			grilla_poss.Rows.Clear();
+			grilla_POSservers.Rows.Clear();
 			
 			query3	= " SELECT ID AS ID, SUCURSAL AS SUCURSAL, CODIGO AS CODIGO FROM pos_pos ORDER BY SUCURSAL ASC ";
 			query4	= " SELECT COUNT(*) AS CANTFILAS FROM pos_pos ";
@@ -225,15 +225,15 @@ namespace POS
 					varId		= int.Parse(reader3["ID"].ToString());
 					varSucursal	= reader3["SUCURSAL"].ToString();
 					varCodigo	= int.Parse(reader3["CODIGO"].ToString());
-					grilla_poss.Rows.Add();
-					grilla_poss.Rows[contFilas].Cells[0].Value		= varId;
-					grilla_poss.Rows[contFilas].Cells[1].Value		= varSucursal;
-					grilla_poss.Rows[contFilas].Cells[2].Value		= varCodigo;
+					grilla_POSservers.Rows.Add();
+					grilla_POSservers.Rows[contFilas].Cells[0].Value		= varId;
+					grilla_POSservers.Rows[contFilas].Cells[1].Value		= varSucursal;
+					grilla_POSservers.Rows[contFilas].Cells[2].Value		= varCodigo;
 					contFilas = contFilas + 1;
 				} while(reader3.Read() && contFilas <= maxFilas);
-				textBox_idPos.Text		= grilla_poss.Rows[0].Cells[0].Value.ToString();
-				textBox_sucursal.Text	= grilla_poss.Rows[0].Cells[1].Value.ToString();
-				textBox_codigo.Text		= grilla_poss.Rows[0].Cells[2].Value.ToString();
+				textBox_idPOSserver.Text		= grilla_POSservers.Rows[0].Cells[0].Value.ToString();
+				textBox_sucursal.Text	= grilla_POSservers.Rows[0].Cells[1].Value.ToString();
+				textBox_codigo.Text		= grilla_POSservers.Rows[0].Cells[2].Value.ToString();
 			}else{
 				MessageBox.Show("No tiene registros este mantenedor.");
 				// Botones de Acción.
@@ -250,7 +250,7 @@ namespace POS
 		
 		void Button_eliminarClick(object sender, EventArgs e)
 		{
-			varId	= int.Parse(textBox_idPos.Text);	
+			varId	= int.Parse(textBox_idPOSserver.Text);	
 			status	= 1;
 
 			query	 = " DELETE FROM pos_pos WHERE ID = "+varId+" ";
@@ -269,7 +269,7 @@ namespace POS
 				
 			neg.cerrar();		
 			
-			grilla_poss.Rows.Clear();
+			grilla_POSservers.Rows.Clear();
 			
 			query3	= " SELECT ID AS ID, SUCURSAL AS SUCURSAL, CODIGO AS CODIGO FROM pos_pos ORDER BY SUCURSAL ASC ";
 			query4	= " SELECT COUNT(*) AS CANTFILAS FROM pos_pos ";
@@ -292,19 +292,19 @@ namespace POS
 					varId		= int.Parse(reader3["ID"].ToString());
 					varSucursal	= reader3["SUCURSAL"].ToString();
 					varCodigo	= int.Parse(reader3["CODIGO"].ToString());
-					grilla_poss.Rows.Add();
-					grilla_poss.Rows[contFilas].Cells[0].Value		= varId;
-					grilla_poss.Rows[contFilas].Cells[1].Value		= varSucursal;
-					grilla_poss.Rows[contFilas].Cells[2].Value		= varCodigo;
+					grilla_POSservers.Rows.Add();
+					grilla_POSservers.Rows[contFilas].Cells[0].Value		= varId;
+					grilla_POSservers.Rows[contFilas].Cells[1].Value		= varSucursal;
+					grilla_POSservers.Rows[contFilas].Cells[2].Value		= varCodigo;
 					contFilas	= contFilas + 1;
 					status		= 1;
 				} while(reader3.Read() && contFilas <= maxFilas);
-				textBox_idPos.Text		= grilla_poss.Rows[0].Cells[0].Value.ToString();
-				textBox_sucursal.Text	= grilla_poss.Rows[0].Cells[1].Value.ToString();
-				textBox_codigo.Text		= grilla_poss.Rows[0].Cells[2].Value.ToString();
+				textBox_idPOSserver.Text		= grilla_POSservers.Rows[0].Cells[0].Value.ToString();
+				textBox_sucursal.Text	= grilla_POSservers.Rows[0].Cells[1].Value.ToString();
+				textBox_codigo.Text		= grilla_POSservers.Rows[0].Cells[2].Value.ToString();
 			}else{
 				MessageBox.Show("No tiene registros este mantenedor.");
-				textBox_idPos.Text		= "0";
+				textBox_idPOSserver.Text		= "0";
 				textBox_sucursal.Text	= "";
 				textBox_codigo.Text		= "0";
 				// Botones de Acción.

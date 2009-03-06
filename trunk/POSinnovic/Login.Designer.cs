@@ -73,7 +73,7 @@ namespace POSinnovic
 			this.textBox1.Location = new System.Drawing.Point(215, 67);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(215, 31);
-			this.textBox1.TabIndex = 2;
+			this.textBox1.TabIndex = 1;
 			// 
 			// textBox2
 			// 
@@ -82,7 +82,7 @@ namespace POSinnovic
 			this.textBox2.Name = "textBox2";
 			this.textBox2.PasswordChar = '*';
 			this.textBox2.Size = new System.Drawing.Size(215, 31);
-			this.textBox2.TabIndex = 3;
+			this.textBox2.TabIndex = 2;
 			// 
 			// button1
 			// 
@@ -100,7 +100,7 @@ namespace POSinnovic
 			this.button2.Location = new System.Drawing.Point(59, 193);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(123, 35);
-			this.button2.TabIndex = 5;
+			this.button2.TabIndex = 3;
 			this.button2.Text = "INGRESAR";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);

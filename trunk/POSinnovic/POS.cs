@@ -94,7 +94,16 @@ namespace POSinnovic
 		
 		void DataGridView1KeyDown(object sender, KeyEventArgs e)
 		{
+			string result;
 			switch(e.KeyCode){
+					case Keys.Delete:
+						result = MessageBox.Show("¿Esta Seguro de eliminar el producto?", "Aviso",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).ToString();
+						if (result.Equals("Yes")){
+							dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+							calctotal();
+							dataGridView1.Rows.Add();
+						}
+						break;
 					case Keys.Left:
 					case Keys.Right:
 					case Keys.Clear:
@@ -105,7 +114,6 @@ namespace POSinnovic
 					case Keys.PageUp:
 					case Keys.End:
 					case Keys.Home:
-					
 						break;
 					case Keys.Subtract:
 					case Keys.OemMinus:
@@ -116,7 +124,11 @@ namespace POSinnovic
 						this.masuno();
 						break;
 					case Keys.Escape:
-						this.Cancela();
+						result = MessageBox.Show("¿Esta Seguro de cancelar la venta?", "Aviso",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).ToString();
+						if (result.Equals("Yes")){
+							this.Cancela();
+							calctotal();
+						}
 						break;
 					case Keys.Enter:
 						dataGridView1.Columns[1].ReadOnly = true;
@@ -181,9 +193,17 @@ namespace POSinnovic
 			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
 			if (!this.textBusqueda.Text.ToString().Trim().Equals("")){
 				int linea = dataGridView1.CurrentRow.Index;
+				int xcant;
+				try{
+					xcant  = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+				}catch{
+					xcant = 1;
+				}
+				dataGridView1.Rows[linea].Cells[0].Value = xcant.ToString();
 				dataGridView1.Rows[linea].Cells[1].Value = ruti.exSQL("SELECT Codigo FROM `innpos_pos`.`pos_lista_precio` where id="+this.textBusqueda.Text.ToString());
 				dataGridView1.Rows[linea].Cells[2].Value = ruti.exSQL("SELECT Descripcion FROM `innpos_pos`.`pos_lista_precio` where id="+this.textBusqueda.Text.ToString());
 				dataGridView1.Rows[linea].Cells[3].Value = ruti.exSQL("SELECT Neto FROM `innpos_pos`.`pos_lista_precio` where id="+this.textBusqueda.Text.ToString());
+				calclinea(linea);
 			}
 		}
 
@@ -204,6 +224,24 @@ namespace POSinnovic
 			}catch(System.NullReferenceException){
 				dataGridView1.Rows[Y].Cells[0].Value = 1;							
 			}
+			calclinea(Y);
+		}
+		
+		void calclinea(int Y){
+			try{
+				dataGridView1.Rows[Y].Cells[4].Value = double.Parse(dataGridView1.Rows[Y].Cells[0].Value.ToString()) * double.Parse(dataGridView1.Rows[Y].Cells[3].Value.ToString());
+				calctotal();
+			}catch{}
+		}
+
+		void calctotal(){
+			int total = 0;
+			try{
+				for(int i=0; i< dataGridView1.Rows.Count; i++){
+					total += int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+				}
+			}catch{}
+			label10.Text = "$"+total.ToString();
 		}
 		
 		void menosuno(){
@@ -218,6 +256,7 @@ namespace POSinnovic
 			}catch(System.NullReferenceException){
 				dataGridView1.Rows[Y].Cells[0].Value = 0;							
 			}
+			calclinea(Y);
 		}
 		
 		void DataGridView1CellLeave(object sender, DataGridViewCellEventArgs e)
@@ -230,7 +269,7 @@ namespace POSinnovic
 			if (dataGridView1.Columns[1].ReadOnly == false & e.KeyCode==Keys.F2){
 				SendKeys.Send("{ENTER}{UP}");
 				Application.DoEvents();
-				string xdat  = "";
+				string xdat   = "";
 				try{
 					xdat  = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 				}catch{}

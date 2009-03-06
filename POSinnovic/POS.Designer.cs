@@ -230,7 +230,7 @@ namespace POSinnovic
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(250, 51);
 			this.label10.TabIndex = 10;
-			this.label10.Text = "$99.999.999";
+			this.label10.Text = "$0";
 			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// label11

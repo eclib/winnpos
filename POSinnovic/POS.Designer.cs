@@ -388,7 +388,7 @@ namespace POSinnovic
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.label12);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;

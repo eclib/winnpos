@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>POS</RootNamespace>
+    <RootNamespace>POSserver</RootNamespace>
     <AssemblyName>POSserver</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -46,6 +46,22 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantConvenios.cs" />
+    <Compile Include="MantConvenios.Designer.cs">
+      <DependentUpon>MantConvenios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantFormaPago.cs" />
+    <Compile Include="MantFormaPago.Designer.cs">
+      <DependentUpon>MantFormaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantInventario.cs" />
+    <Compile Include="MantInventario.Designer.cs">
+      <DependentUpon>MantInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantListaPrecios.cs" />
+    <Compile Include="MantListaPrecios.Designer.cs">
+      <DependentUpon>MantListaPrecios.cs</DependentUpon>
+    </Compile>
     <Compile Include="MantParam.cs" />
     <Compile Include="MantParam.Designer.cs">
       <DependentUpon>MantParam.cs</DependentUpon>
@@ -65,6 +81,18 @@
     <Compile Include="negocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Rutinas.cs" />
+    <EmbeddedResource Include="MantConvenios.resx">
+      <DependentUpon>MantConvenios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantFormaPago.resx">
+      <DependentUpon>MantFormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantInventario.resx">
+      <DependentUpon>MantInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantListaPrecios.resx">
+      <DependentUpon>MantListaPrecios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MantParam.resx">
       <DependentUpon>MantParam.cs</DependentUpon>
     </EmbeddedResource>

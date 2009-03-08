@@ -1,11 +1,4 @@
-/*
- * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 28/02/2009
- * Hora: 04:45 p.m.
- * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
- */
+/* INNOVIC 2008 | WinnPOSserver */
 
 using System;
 using System.Drawing;
@@ -48,7 +41,7 @@ namespace POSserver
 			status = 0;
 			
 			query	= " SELECT ID AS ID, SUCURSAL AS SUCURSAL, CODIGO AS CODIGO FROM pos_pos ORDER BY SUCURSAL ASC ";
-			query2	= " SELECT COUNT(*) AS CANTFILAS FROM POS_POS ";
+			query2	= " SELECT COUNT(*) AS CANTFILAS FROM pos_pos ";
 			
 			negocio neg				= new negocio();
 			negocio neg2			= new negocio();

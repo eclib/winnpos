@@ -1,11 +1,4 @@
-/*
- * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 28/02/2009
- * Hora: 04:09 p.m.
- * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
- */
+/* INNOVIC 2009 - POSserver */
 
 using System;
 using System.Collections.Generic;
@@ -14,26 +7,22 @@ using System.Windows.Forms;
 
 namespace POSserver
 {
-	/// <summary>
-	/// Description of MainForm.
-	/// </summary>
+	/// Descripción MainForm : Programa que contiene todas las interfaces de POSserver.
+
 	public partial class MainForm : Form
 	{
 		public MainForm()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
 			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-			
-			//POSserver.MantSucursales xx = new MantSucursales();
-			//POSserver.MantUsuarios xx = new MantUsuarios();
-			//POSserver.MantPOSserver xx = 	new MantPOSserver();
-			POSserver.MantParam xx = 	new MantParam();
+			//POSserver.MantSucursales		xx	= new MantSucursales();
+			//POSserver.MantUsuarios		xx	= new MantUsuarios();
+			//POSserver.MantPOSserver		xx	= new MantPOSserver();
+			//POSserver.MantParam			xx	= new MantParam();
+			//POSserver.MantListaPrecios	xx	= new MantListaPrecios();
+			//POSserver.MantInventario		xx = new MantInventario();
+			//POSserver.MantFormaPago		xx = new MantFormaPago();
+			POSserver.MantConvenios			xx = new MantConvenios();
 			xx.Show();
 			this.Hide();
 		}

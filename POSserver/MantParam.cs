@@ -1,11 +1,4 @@
-/*
- * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 04/03/2009
- * Hora: 08:25 p.m.
- * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
- */
+/* INNOVIC 2008 | WinnPOSserver */
 
 using System;
 using System.Drawing;
@@ -173,7 +166,7 @@ namespace POSserver
 
 			query	= " SELECT ID AS ID, IVA AS IVA, DATOS_BOLETA AS DATOS_BOLETA, DATOS_FACTURA AS DATOS_FACTURA, DIAS_HISTORICO AS DIAS_HISTORICO, SUPERCTA AS SUPERCTA, SERVER_BD AS SERVER_BD, PORT_BD AS PORT_BD, SERVER_CENTRAL AS SERVER_CENTRAL, PORT_CENTRAL AS PORT_CENTRAL, SERVER_DIOS AS SERVER_DIOS FROM pos_parametros ";
 			
-			neg				= new negocio();
+			neg		= new negocio();
 			reader	= neg.select(query);
 			
 			if (reader.Read()){
@@ -238,6 +231,58 @@ namespace POSserver
 				}
 			}catch(MySql.Data.MySqlClient.MySqlException r){
 				r.ToString();
+			}
+			neg.cerrar();		
+			
+			query	= " SELECT ID AS ID, IVA AS IVA, DATOS_BOLETA AS DATOS_BOLETA, DATOS_FACTURA AS DATOS_FACTURA, DIAS_HISTORICO AS DIAS_HISTORICO, SUPERCTA AS SUPERCTA, SERVER_BD AS SERVER_BD, PORT_BD AS PORT_BD, SERVER_CENTRAL AS SERVER_CENTRAL, PORT_CENTRAL AS PORT_CENTRAL, SERVER_DIOS AS SERVER_DIOS FROM pos_parametros ";
+			
+			neg		= new negocio();
+			reader	= neg.select(query);
+			
+			if (reader.Read()){
+					varId				= int.Parse(reader["ID"].ToString());
+					varIva				= int.Parse(reader["IVA"].ToString());
+					varDatosBoleta		= reader["DATOS_BOLETA"].ToString();
+					varDatosFactura		= reader["DATOS_FACTURA"].ToString();
+					varDiasHistorico	= int.Parse(reader["DIAS_HISTORICO"].ToString());
+					varSuperCta			= reader["SUPERCTA"].ToString();
+					varServerBd			= reader["SERVER_BD"].ToString();
+					varPortBd			= reader["PORT_BD"].ToString();
+					varServerCentral	= reader["SERVER_CENTRAL"].ToString();
+					varPortCentral		= reader["PORT_CENTRAL"].ToString();
+					varServerDios		= reader["SERVER_DIOS"].ToString();
+					// Botones de Acción.
+					button_nuevo.Enabled		= true;
+					button_grabar.Enabled		= true;
+					button_eliminar.Enabled		= true;
+					textBox_idParametro.Text	= varId.ToString();
+					textBox_iva.Text			= varIva.ToString();
+					textBox_datosBoleta.Text	= varDatosBoleta;	
+					textBox_datosFactura.Text	= varDatosFactura;		
+					textBox_diasHistoricos.Text	= varDiasHistorico.ToString();
+					textBox_superCta.Text		= varSuperCta;		
+					textBox_serverBd.Text		= varServerBd;		
+					textBox_portBd.Text			= varPortBd;			
+					textBox_serverCentral.Text	= varServerCentral;	
+					textBox_portCentral.Text	= varPortCentral;		
+					textBox_serverDios.Text		= varServerDios;	
+			}else{
+				MessageBox.Show("No tiene datos este mantenedor.");
+				// Botones de Acción.
+				button_nuevo.Enabled		= true;
+				button_grabar.Enabled		= false;
+				button_eliminar.Enabled		= false;
+				textBox_idParametro.Text	= "0";			
+				textBox_iva.Text			= "0";				
+				textBox_datosBoleta.Text	= "";	
+				textBox_datosFactura.Text	= "";		
+				textBox_diasHistoricos.Text	= "0";	
+				textBox_superCta.Text		= "";		
+				textBox_serverBd.Text		= "";		
+				textBox_portBd.Text			= "";			
+				textBox_serverCentral.Text	= "";	
+				textBox_portCentral.Text	= "";		
+				textBox_serverDios.Text		= "";
 			}
 			neg.cerrar();			
 		}

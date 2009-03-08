@@ -8,3 +8,7 @@ bin\Debug\POSserver.exe
 bin\Debug\POSserver.pdb
 obj\Debug\POSserver.exe
 obj\Debug\POSserver.pdb
+obj\Debug\POSserver.MantListaPrecios.resources
+obj\Debug\POSserver.MantInventario.resources
+obj\Debug\POSserver.MantFormaPago.resources
+obj\Debug\POSserver.MantConvenios.resources

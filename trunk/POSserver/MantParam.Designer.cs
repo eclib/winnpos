@@ -1,11 +1,5 @@
-﻿/*
- * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 04/03/2009
- * Hora: 08:25 p.m.
- * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
- */
+﻿/* INNOVIC 2008 | WinnPOSserver */
+
 namespace POSserver
 {
 	partial class MantParam

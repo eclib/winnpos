@@ -1,11 +1,4 @@
-/*
- * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 28/02/2009
- * Hora: 04:09 p.m.
- * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
- */
+/* INNOVIC 2009 - POSserver */
 
 using System;
 using System.Windows.Forms;

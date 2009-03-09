@@ -396,6 +396,7 @@ namespace POSinnovic
 			this.Text = "POS";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Activated += new System.EventHandler(this.POSActivated);
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.POSFormClosed);
 			this.Resize += new System.EventHandler(this.POSResize);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.POSKeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

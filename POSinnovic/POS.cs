@@ -21,7 +21,9 @@ namespace POSinnovic
 	/// </summary>
 	public partial class POS : Form
 	{
+		public Login madre;
 		private System.Windows.Forms.TextBox textBusqueda  = new System.Windows.Forms.TextBox();
+		private bool swglobal = true;
 		
 		public POS()
 		{
@@ -92,6 +94,34 @@ namespace POSinnovic
 
 		}
 		
+		void actualizalinea(int linea){
+			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
+			if (this.swglobal && dataGridView1.Rows[linea].Cells[1].Value != null){
+				if (!dataGridView1.Rows[linea].Cells[1].Value.ToString().Equals("") ){
+					string Codigo = dataGridView1.Rows[linea].Cells[1].Value.ToString().Trim();
+					if (int.Parse(ruti.exSQL("SELECT count(*) FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'")) > 0){
+						int xcant;
+						try{
+							xcant  = int.Parse(dataGridView1.Rows[linea].Cells[0].Value.ToString());
+						}catch{
+							xcant = 1;
+						}
+						dataGridView1.Rows[linea].Cells[0].Value = xcant.ToString();
+						dataGridView1.Rows[linea].Cells[1].Value = ruti.exSQL("SELECT Codigo FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						dataGridView1.Rows[linea].Cells[2].Value = ruti.exSQL("SELECT Descripcion FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						dataGridView1.Rows[linea].Cells[3].Value = ruti.exSQL("SELECT Neto FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						calclinea(linea);
+					}else{
+						dataGridView1.Rows[linea].Cells[0].Value = "";
+						dataGridView1.Rows[linea].Cells[1].Value = "";
+						dataGridView1.Rows[linea].Cells[2].Value = "";
+						dataGridView1.Rows[linea].Cells[3].Value = "";
+						dataGridView1.Rows[linea].Cells[4].Value = "";
+					}
+				}
+			}
+		}
+		
 		void DataGridView1KeyDown(object sender, KeyEventArgs e)
 		{
 			string result;
@@ -103,6 +133,10 @@ namespace POSinnovic
 							calctotal();
 							dataGridView1.Rows.Add();
 						}
+						break;
+					case Keys.Down:
+					case Keys.Up:
+						actualizalinea(dataGridView1.CurrentRow.Index);
 						break;
 					case Keys.Left:
 					case Keys.Right:
@@ -195,7 +229,7 @@ namespace POSinnovic
 				int linea = dataGridView1.CurrentRow.Index;
 				int xcant;
 				try{
-					xcant  = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+					xcant  = int.Parse(dataGridView1.Rows[linea].Cells[0].Value.ToString());
 				}catch{
 					xcant = 1;
 				}
@@ -262,28 +296,75 @@ namespace POSinnovic
 		void DataGridView1CellLeave(object sender, DataGridViewCellEventArgs e)
 		{
 			dataGridView1.Columns[1].ReadOnly = true;
+			int linea = dataGridView1.CurrentRow.Index;
+			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
+			if (this.swglobal && dataGridView1.Rows[linea].Cells[1].Value != null){
+				if (!dataGridView1.Rows[linea].Cells[1].Value.ToString().Equals("") ){
+					string Codigo = dataGridView1.Rows[linea].Cells[1].Value.ToString().Trim();
+					if (int.Parse(ruti.exSQL("SELECT count(*) FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'")) > 0){
+						int xcant;
+						try{
+							xcant  = int.Parse(dataGridView1.Rows[linea].Cells[0].Value.ToString());
+						}catch{
+							xcant = 1;
+						}
+						dataGridView1.Rows[linea].Cells[0].Value = xcant.ToString();
+						dataGridView1.Rows[linea].Cells[1].Value = ruti.exSQL("SELECT Codigo FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						dataGridView1.Rows[linea].Cells[2].Value = ruti.exSQL("SELECT Descripcion FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						dataGridView1.Rows[linea].Cells[3].Value = ruti.exSQL("SELECT Neto FROM `innpos_pos`.`pos_lista_precio` where Codigo='"+Codigo+"'");
+						calclinea(linea);
+					}else{
+						dataGridView1.Rows[linea].Cells[0].Value = "";
+						dataGridView1.Rows[linea].Cells[1].Value = "";
+						dataGridView1.Rows[linea].Cells[2].Value = "";
+						dataGridView1.Rows[linea].Cells[3].Value = "";
+						dataGridView1.Rows[linea].Cells[4].Value = "";
+					}
+				}
+			}
 		}
 		
 		void POSKeyDown(object sender, KeyEventArgs e)
 		{
-			if (dataGridView1.Columns[1].ReadOnly == false & e.KeyCode==Keys.F2){
-				SendKeys.Send("{ENTER}{UP}");
-				Application.DoEvents();
-				string xdat   = "";
-				try{
-					xdat  = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
-				}catch{}
-				string Likee = "";
-				if (!xdat.Trim().Equals("")){
-					Likee = " where CODIGO like'%"+xdat+"%' or DESCRIPCION like'%"+xdat+"%'";	
-				}
-				string sql = "SELECT * FROM `innpos_pos`.`pos_lista_precio` "+Likee+" ORDER BY `ID`";
-				AyuGen AYG  = new AyuGen(sql);
-				AYG.AddOrigen("ID");
-				AYG.AddDestino(this.textBusqueda);
-				AYG.Text="Ayuda de Codigos";
-				AYG.Show();
+			switch(e.KeyCode){
+				case Keys.F2:
+					if (dataGridView1.Columns[1].ReadOnly == false){
+						this.swglobal = false;
+						SendKeys.Send("{ENTER}{UP}");
+						Application.DoEvents();
+						this.swglobal = true;
+						string xdat   = "";
+						try{
+							xdat  = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
+						}catch{}
+						string Likee = "";
+						if (!xdat.Trim().Equals("")){
+							Likee = " where CODIGO like'%"+xdat+"%' or DESCRIPCION like'%"+xdat+"%'";	
+						}
+						string sql = "SELECT * FROM `innpos_pos`.`pos_lista_precio` "+Likee+" ORDER BY `ID`";
+						AyuGen AYG  = new AyuGen(sql);
+						AYG.AddOrigen("ID");
+						AYG.AddDestino(this.textBusqueda);
+						AYG.Text="Ayuda de Codigos";
+						AYG.Show();
+					}
+					break;
+				case Keys.F4:
+					string result = MessageBox.Show("¿Esta seguro de salir de la aplicación?", "Aviso",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).ToString();
+					if (result.Equals("Yes")){
+						this.madre.Close();
+					}
+					break;
+				case Keys.Down:
+				case Keys.Up:
+					break;
 			}
+
+		}
+		
+		void POSFormClosed(object sender, FormClosedEventArgs e)
+		{
+			this.madre.Close();
 		}
 	}
 }

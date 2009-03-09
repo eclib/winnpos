@@ -36,12 +36,20 @@ namespace POSinnovic
 			ControlUsuarios CTRL = new ControlUsuarios();
 			if (CTRL.check(this.textBox1.Text,this.textBox2.Text)){
 				POS FrmPOS = new POS();
+				FrmPOS.madre = this;
 				FrmPOS.Show();
 				this.Visible=false;
 			}else{
+				MessageBox.Show("Usuario o Contraseña no valido, favor intentar nuevamente", "Aviso");
+
 				this.textBox1.Text="";
 				this.textBox2.Text="";
 			}
+		}
+		
+		void Button1Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

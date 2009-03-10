@@ -18,9 +18,9 @@ namespace POSserver
 		MySqlDataReader	reader;
 		
 		string server	= "localhost";
-		string db		= "innPOS_server";
-		string user		= "root";
-		string pass		= "12345";
+		string db		= "innpos_server";
+		string user		= "innovic";
+		string pass		= "1nn0v1c";
 		string port		= "3306";
 		
 		public negocio()

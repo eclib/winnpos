@@ -38,7 +38,7 @@ namespace POSserver
 			this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.button_nuevo = new System.Windows.Forms.Button();
 			this.button_grabar = new System.Windows.Forms.Button();
-			this.groupBox_POSservers = new System.Windows.Forms.GroupBox();
+			this.groupBox_POSs = new System.Windows.Forms.GroupBox();
 			this.groupBox_POSserver = new System.Windows.Forms.GroupBox();
 			this.textBox_codigo = new System.Windows.Forms.TextBox();
 			this.label_2puntos3 = new System.Windows.Forms.Label();
@@ -48,9 +48,9 @@ namespace POSserver
 			this.label_sucursal = new System.Windows.Forms.Label();
 			this.textBox_idPOSserver = new System.Windows.Forms.TextBox();
 			this.label_2puntos1 = new System.Windows.Forms.Label();
-			this.label_idPOSserver = new System.Windows.Forms.Label();
+			this.label_idPOS = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.grilla_POSservers)).BeginInit();
-			this.groupBox_POSservers.SuspendLayout();
+			this.groupBox_POSs.SuspendLayout();
 			this.groupBox_POSserver.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -131,15 +131,15 @@ namespace POSserver
 			this.button_grabar.UseVisualStyleBackColor = true;
 			this.button_grabar.Click += new System.EventHandler(this.Button_grabarClick);
 			// 
-			// groupBox_POSservers
+			// groupBox_POSs
 			// 
-			this.groupBox_POSservers.Controls.Add(this.grilla_POSservers);
-			this.groupBox_POSservers.Location = new System.Drawing.Point(12, 239);
-			this.groupBox_POSservers.Name = "groupBox_POSservers";
-			this.groupBox_POSservers.Size = new System.Drawing.Size(771, 189);
-			this.groupBox_POSservers.TabIndex = 3;
-			this.groupBox_POSservers.TabStop = false;
-			this.groupBox_POSservers.Text = "POSservers";
+			this.groupBox_POSs.Controls.Add(this.grilla_POSservers);
+			this.groupBox_POSs.Location = new System.Drawing.Point(12, 239);
+			this.groupBox_POSs.Name = "groupBox_POSs";
+			this.groupBox_POSs.Size = new System.Drawing.Size(771, 189);
+			this.groupBox_POSs.TabIndex = 3;
+			this.groupBox_POSs.TabStop = false;
+			this.groupBox_POSs.Text = "POSs";
 			// 
 			// groupBox_POSserver
 			// 
@@ -155,13 +155,13 @@ namespace POSserver
 			this.groupBox_POSserver.Controls.Add(this.label_sucursal);
 			this.groupBox_POSserver.Controls.Add(this.textBox_idPOSserver);
 			this.groupBox_POSserver.Controls.Add(this.label_2puntos1);
-			this.groupBox_POSserver.Controls.Add(this.label_idPOSserver);
+			this.groupBox_POSserver.Controls.Add(this.label_idPOS);
 			this.groupBox_POSserver.Location = new System.Drawing.Point(12, 12);
 			this.groupBox_POSserver.Name = "groupBox_POSserver";
 			this.groupBox_POSserver.Size = new System.Drawing.Size(771, 220);
 			this.groupBox_POSserver.TabIndex = 2;
 			this.groupBox_POSserver.TabStop = false;
-			this.groupBox_POSserver.Text = "Datos POSserver";
+			this.groupBox_POSserver.Text = "Datos POS";
 			// 
 			// textBox_codigo
 			// 
@@ -224,33 +224,34 @@ namespace POSserver
 			this.label_2puntos1.TabIndex = 1;
 			this.label_2puntos1.Text = ":";
 			// 
-			// label_idPOSserver
+			// label_idPOS
 			// 
-			this.label_idPOSserver.Location = new System.Drawing.Point(6, 31);
-			this.label_idPOSserver.Name = "label_idPOSserver";
-			this.label_idPOSserver.Size = new System.Drawing.Size(89, 20);
-			this.label_idPOSserver.TabIndex = 0;
-			this.label_idPOSserver.Text = "ID POSserver";
+			this.label_idPOS.Location = new System.Drawing.Point(6, 31);
+			this.label_idPOS.Name = "label_idPOS";
+			this.label_idPOS.Size = new System.Drawing.Size(89, 20);
+			this.label_idPOS.TabIndex = 0;
+			this.label_idPOS.Text = "ID POS";
 			// 
 			// MantPOSserver
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(795, 440);
-			this.Controls.Add(this.groupBox_POSservers);
+			this.Controls.Add(this.groupBox_POSs);
 			this.Controls.Add(this.groupBox_POSserver);
 			this.Name = "MantPOSserver";
-			this.Text = "Mantenedor de POSservers";
+			this.Text = "Mantenedor de POS";
 			((System.ComponentModel.ISupportInitialize)(this.grilla_POSservers)).EndInit();
-			this.groupBox_POSservers.ResumeLayout(false);
+			this.groupBox_POSs.ResumeLayout(false);
 			this.groupBox_POSserver.ResumeLayout(false);
 			this.groupBox_POSserver.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.GroupBox groupBox_POSs;
+		private System.Windows.Forms.Label label_idPOS;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-		private System.Windows.Forms.Label label_idPOSserver;
 		private System.Windows.Forms.Label label_2puntos1;
 		private System.Windows.Forms.TextBox textBox_idPOSserver;
 		private System.Windows.Forms.Label label_sucursal;
@@ -260,7 +261,6 @@ namespace POSserver
 		private System.Windows.Forms.Label label_2puntos3;
 		private System.Windows.Forms.TextBox textBox_codigo;
 		private System.Windows.Forms.GroupBox groupBox_POSserver;
-		private System.Windows.Forms.GroupBox groupBox_POSservers;
 		private System.Windows.Forms.Button button_grabar;
 		private System.Windows.Forms.Button button_nuevo;
 		private System.Windows.Forms.DataGridView grilla_POSservers;

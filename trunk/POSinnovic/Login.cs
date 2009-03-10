@@ -35,7 +35,8 @@ namespace POSinnovic
 		{
 			ControlUsuarios CTRL = new ControlUsuarios();
 			if (CTRL.check(this.textBox1.Text,this.textBox2.Text)){
-				POS FrmPOS = new POS();
+
+				POS FrmPOS = new POS("localhost","3306", "innovic","1nn0v1c", "innpos_pos" );
 				FrmPOS.madre = this;
 				FrmPOS.Show();
 				this.Visible=false;

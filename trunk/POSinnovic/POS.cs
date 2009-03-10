@@ -24,9 +24,21 @@ namespace POSinnovic
 		public Login madre;
 		private System.Windows.Forms.TextBox textBusqueda  = new System.Windows.Forms.TextBox();
 		private bool swglobal = true;
+		private int color = 0;
+		public string db;
+		public string user;
+		public string pass;
+		public string port;
+		public string server;
 		
-		public POS()
+		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
+			this.db      = Db;
+			this.user    = User;
+			this.pass    = Pass;
+			this.port    = Port;
+			this.server  = Server;
+			
 			this.textBusqueda.Text="0";
 			this.textBusqueda.TextChanged += new EventHandler(this.infoCodigo);
 			
@@ -64,10 +76,19 @@ namespace POSinnovic
 		void POSActivated(object sender, EventArgs e)
 		{
 //			groupBox1.Location = new Point(groupBox1.Location.X , this.Size.Height-54);
+			int cont;
 			for(int i=0; i<100; i++){
 				dataGridView1.Rows.Add();
 				dataGridView1.Rows[dataGridView1.Rows.Count-1].HeaderCell.Value=1;
 				dataGridView1.RowHeadersVisible = false;
+				cont = dataGridView1.Rows.Count;
+				if (this.color == 0){
+					dataGridView1.Rows[cont-1].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
+					this.color = 1;
+				}else{
+					dataGridView1.Rows[cont-1].DefaultCellStyle.BackColor = Color.White;
+					this.color = 0;
+				}
 			}
 				
 		}
@@ -95,7 +116,7 @@ namespace POSinnovic
 		}
 		
 		void actualizalinea(int linea){
-			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
+			Rutinas.Rutinas ruti = new Rutinas.Rutinas(this.server, this.port, this.user, this.pass, this.db);;
 			if (this.swglobal && dataGridView1.Rows[linea].Cells[1].Value != null){
 				if (!dataGridView1.Rows[linea].Cells[1].Value.ToString().Equals("") ){
 					string Codigo = dataGridView1.Rows[linea].Cells[1].Value.ToString().Trim();
@@ -129,9 +150,24 @@ namespace POSinnovic
 					case Keys.Delete:
 						result = MessageBox.Show("¿Esta Seguro de eliminar el producto?", "Aviso",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).ToString();
 						if (result.Equals("Yes")){
+							int pos1 =  dataGridView1.CurrentRow.Index;
 							dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
 							calctotal();
 							dataGridView1.Rows.Add();
+							if (dataGridView1.Rows[pos1].DefaultCellStyle.BackColor == Color.White){
+								this.color = 0;
+							}else{
+								this.color = 1;
+							}
+							for (int i = pos1; i <dataGridView1.Rows.Count-1; i++){
+								if (this.color == 0){
+									dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
+									this.color = 1;
+								}else{
+									dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White;
+									this.color = 0;
+								}
+							}
 						}
 						break;
 					case Keys.Down:
@@ -178,6 +214,11 @@ namespace POSinnovic
 						}
 						string sql = "SELECT * FROM `innpos_pos`.`pos_lista_precio` "+Likee+" ORDER BY `ID`";
 						AyuGen AYG  = new AyuGen(sql);
+						AYG.db      = this.db;
+						AYG.user    = this.user;
+						AYG.pass    = this.pass;
+						AYG.server  = this.server;
+						AYG.port    = this.port;
 						AYG.AddOrigen("ID");
 						AYG.AddDestino(this.textBusqueda);
 						AYG.Text="Ayuda de Codigos";
@@ -224,7 +265,8 @@ namespace POSinnovic
 
 		void infoCodigo(object sender, EventArgs e)
 		{
-			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
+			
+			Rutinas.Rutinas ruti = new Rutinas.Rutinas(this.server, this.port, this.user, this.pass, this.db);
 			if (!this.textBusqueda.Text.ToString().Trim().Equals("")){
 				int linea = dataGridView1.CurrentRow.Index;
 				int xcant;
@@ -243,10 +285,18 @@ namespace POSinnovic
 
 		void Cancela(){
 			dataGridView1.Rows.Clear();
+			this.color = 0;
 			for(int i=0; i<100; i++){
 				dataGridView1.Rows.Add();
 				dataGridView1.Rows[dataGridView1.Rows.Count-1].HeaderCell.Value=1;
 				dataGridView1.RowHeadersVisible = false;
+				if (this.color == 0){
+					dataGridView1.Rows[dataGridView1.Rows.Count-1].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
+					this.color = 1;
+				}else{
+					dataGridView1.Rows[dataGridView1.Rows.Count-1].DefaultCellStyle.BackColor = Color.White;
+					this.color = 0;
+				}
 			}
 		}
 		void masuno(){
@@ -297,7 +347,7 @@ namespace POSinnovic
 		{
 			dataGridView1.Columns[1].ReadOnly = true;
 			int linea = dataGridView1.CurrentRow.Index;
-			Rutinas.Rutinas ruti = new Rutinas.Rutinas();
+			Rutinas.Rutinas ruti = new Rutinas.Rutinas(this.server, this.port, this.user, this.pass, this.db);;
 			if (this.swglobal && dataGridView1.Rows[linea].Cells[1].Value != null){
 				if (!dataGridView1.Rows[linea].Cells[1].Value.ToString().Equals("") ){
 					string Codigo = dataGridView1.Rows[linea].Cells[1].Value.ToString().Trim();
@@ -341,8 +391,14 @@ namespace POSinnovic
 						if (!xdat.Trim().Equals("")){
 							Likee = " where CODIGO like'%"+xdat+"%' or DESCRIPCION like'%"+xdat+"%'";	
 						}
-						string sql = "SELECT * FROM `innpos_pos`.`pos_lista_precio` "+Likee+" ORDER BY `ID`";
+						string sql  = "SELECT * FROM pos_lista_precio "+Likee+" ORDER BY `ID`";
 						AyuGen AYG  = new AyuGen(sql);
+						AYG.db      = this.db;
+						AYG.user    = this.user;
+						AYG.pass    = this.pass;
+						AYG.server  = this.server;
+						AYG.port    = this.port;
+							
 						AYG.AddOrigen("ID");
 						AYG.AddDestino(this.textBusqueda);
 						AYG.Text="Ayuda de Codigos";

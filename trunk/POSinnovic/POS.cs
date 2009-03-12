@@ -229,9 +229,9 @@ namespace POSinnovic
 					case Keys.F4:
 						break;
 					case Keys.F5:
-						ParamDsto Prtro = new ParamDsto();
-						Prtro.grilla=this.dataGridView1;
-						Prtro.ShowDialog();
+						FormDescuento Desct = new FormDescuento();
+						Desct.grilla		= this.dataGridView1;
+						Desct.ShowDialog();
 						/*
 						PrsDescuento Desc = new PrsDescuento();
 						bool Descuento = Desc.ObtenerDstoCliente("14345973-2");

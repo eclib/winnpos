@@ -70,19 +70,28 @@
       <DependentUpon>CierreVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlUsuarios.cs" />
+    <Compile Include="Descuento.cs" />
     <Compile Include="impresion.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParamDsto.cs" />
+    <Compile Include="ParamDsto.Designer.cs">
+      <DependentUpon>ParamDsto.cs</DependentUpon>
     </Compile>
     <Compile Include="POS.cs" />
     <Compile Include="POS.Designer.cs">
       <DependentUpon>POS.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="PrsDescuento.cs" />
     <Compile Include="Terminar.cs" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParamDsto.resx">
+      <DependentUpon>ParamDsto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POS.resx">
       <DependentUpon>POS.cs</DependentUpon>

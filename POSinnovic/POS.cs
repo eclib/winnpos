@@ -224,12 +224,18 @@ namespace POSinnovic
 						AYG.Text="Ayuda de Codigos";
 						AYG.Show();
 						break;
-						
 					case Keys.F3:
 						break;
 					case Keys.F4:
 						break;
 					case Keys.F5:
+						ParamDsto Prtro = new ParamDsto();
+						Prtro.grilla=this.dataGridView1;
+						Prtro.ShowDialog();
+						/*
+						PrsDescuento Desc = new PrsDescuento();
+						bool Descuento = Desc.ObtenerDstoCliente("14345973-2");
+						MessageBox.Show(Descuento.ToString());*/
 						break;
 					case Keys.F6:
 						break;

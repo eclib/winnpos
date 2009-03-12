@@ -71,6 +71,10 @@
     </Compile>
     <Compile Include="ControlUsuarios.cs" />
     <Compile Include="Descuento.cs" />
+    <Compile Include="FormDescuento.cs" />
+    <Compile Include="FormDescuento.Designer.cs">
+      <DependentUpon>FormDescuento.cs</DependentUpon>
+    </Compile>
     <Compile Include="impresion.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Login.Designer.cs">
@@ -87,6 +91,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="PrsDescuento.cs" />
     <Compile Include="Terminar.cs" />
+    <EmbeddedResource Include="FormDescuento.resx">
+      <DependentUpon>FormDescuento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

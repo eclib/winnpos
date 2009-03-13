@@ -43,6 +43,28 @@ namespace POSinnovic
 		}
 
 		/// <summary>
+		/// Metodo para obtener el Tipo de Descuento.
+		/// </summary>
+		public string obtenerTipo(){
+			return Desct1.TipoDesct.ToString();
+		}
+
+		/// <summary>
+		/// Metodo para obtener el Codigo.
+		/// </summary>		
+		public string obtenerCodigo(){
+			return Desct1.CodigoDesct.ToString();		
+		}
+
+		/// <summary>
+		/// Metodo para obtener el Valor del Descuento.
+		/// </summary>
+		public int obtenerDesct(){
+			return Desct1.ValorDesct;		
+		}		
+		
+		
+		/// <summary>
 		/// Metodo para obtener el Tipo de Descuento de la linea.
 		/// </summary>
 		public string obtenerTipo(int indice){

@@ -75,6 +75,7 @@ namespace POSinnovic
 			this.textBox_porcentaje.Name = "textBox_porcentaje";
 			this.textBox_porcentaje.Size = new System.Drawing.Size(216, 24);
 			this.textBox_porcentaje.TabIndex = 2;
+			this.textBox_porcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaTeclaNumerica);
 			this.textBox_porcentaje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
 			// 
 			// textBox_importe
@@ -87,6 +88,7 @@ namespace POSinnovic
 			this.textBox_importe.Name = "textBox_importe";
 			this.textBox_importe.Size = new System.Drawing.Size(216, 24);
 			this.textBox_importe.TabIndex = 3;
+			this.textBox_importe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaTeclaNumerica);
 			this.textBox_importe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
 			// 
 			// textBox_codigo

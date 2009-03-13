@@ -36,77 +36,93 @@ namespace POSinnovic
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.groupBox_porcentaje = new System.Windows.Forms.GroupBox();
+			this.label_porcentaje = new System.Windows.Forms.Label();
+			this.label_importe = new System.Windows.Forms.Label();
 			this.textBox_porcentaje = new System.Windows.Forms.TextBox();
-			this.groupBox_importe = new System.Windows.Forms.GroupBox();
 			this.textBox_importe = new System.Windows.Forms.TextBox();
-			this.groupBox_porcentaje.SuspendLayout();
-			this.groupBox_importe.SuspendLayout();
+			this.textBox_codigo = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// groupBox_porcentaje
+			// label_porcentaje
 			// 
-			this.groupBox_porcentaje.Controls.Add(this.textBox_porcentaje);
-			this.groupBox_porcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox_porcentaje.ForeColor = System.Drawing.Color.Black;
-			this.groupBox_porcentaje.Location = new System.Drawing.Point(34, 12);
-			this.groupBox_porcentaje.Name = "groupBox_porcentaje";
-			this.groupBox_porcentaje.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.groupBox_porcentaje.Size = new System.Drawing.Size(199, 56);
-			this.groupBox_porcentaje.TabIndex = 0;
-			this.groupBox_porcentaje.TabStop = false;
-			this.groupBox_porcentaje.Text = "PORCENTAJE % [ F9 ]";
+			this.label_porcentaje.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_porcentaje.ForeColor = System.Drawing.Color.Black;
+			this.label_porcentaje.Location = new System.Drawing.Point(28, 18);
+			this.label_porcentaje.Name = "label_porcentaje";
+			this.label_porcentaje.Size = new System.Drawing.Size(200, 23);
+			this.label_porcentaje.TabIndex = 0;
+			this.label_porcentaje.Text = "Porcentaje % [ F9 ]";
+			this.label_porcentaje.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// label_importe
+			// 
+			this.label_importe.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_importe.ForeColor = System.Drawing.Color.Black;
+			this.label_importe.Location = new System.Drawing.Point(278, 18);
+			this.label_importe.Name = "label_importe";
+			this.label_importe.Size = new System.Drawing.Size(200, 23);
+			this.label_importe.TabIndex = 1;
+			this.label_importe.Text = "Importe $ [ F10 ]";
+			this.label_importe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// textBox_porcentaje
 			// 
-			this.textBox_porcentaje.Font = new System.Drawing.Font("Courier New", 12F);
-			this.textBox_porcentaje.Location = new System.Drawing.Point(6, 19);
+			this.textBox_porcentaje.BackColor = System.Drawing.Color.Silver;
+			this.textBox_porcentaje.Enabled = false;
+			this.textBox_porcentaje.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox_porcentaje.Location = new System.Drawing.Point(12, 44);
+			this.textBox_porcentaje.MaxLength = 3;
 			this.textBox_porcentaje.Name = "textBox_porcentaje";
-			this.textBox_porcentaje.Size = new System.Drawing.Size(187, 26);
-			this.textBox_porcentaje.TabIndex = 1;
-			// 
-			// groupBox_importe
-			// 
-			this.groupBox_importe.Controls.Add(this.textBox_importe);
-			this.groupBox_importe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox_importe.ForeColor = System.Drawing.Color.Black;
-			this.groupBox_importe.Location = new System.Drawing.Point(239, 12);
-			this.groupBox_importe.Name = "groupBox_importe";
-			this.groupBox_importe.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.groupBox_importe.Size = new System.Drawing.Size(199, 56);
-			this.groupBox_importe.TabIndex = 1;
-			this.groupBox_importe.TabStop = false;
-			this.groupBox_importe.Text = "IMPORTE $ [ F10 ]";
+			this.textBox_porcentaje.Size = new System.Drawing.Size(216, 24);
+			this.textBox_porcentaje.TabIndex = 2;
+			this.textBox_porcentaje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
 			// 
 			// textBox_importe
 			// 
-			this.textBox_importe.Font = new System.Drawing.Font("Courier New", 12F);
-			this.textBox_importe.Location = new System.Drawing.Point(6, 19);
+			this.textBox_importe.BackColor = System.Drawing.Color.Silver;
+			this.textBox_importe.Enabled = false;
+			this.textBox_importe.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox_importe.Location = new System.Drawing.Point(262, 44);
+			this.textBox_importe.MaxLength = 10;
 			this.textBox_importe.Name = "textBox_importe";
-			this.textBox_importe.Size = new System.Drawing.Size(187, 26);
-			this.textBox_importe.TabIndex = 1;
+			this.textBox_importe.Size = new System.Drawing.Size(216, 24);
+			this.textBox_importe.TabIndex = 3;
+			this.textBox_importe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
+			// 
+			// textBox_codigo
+			// 
+			this.textBox_codigo.Enabled = false;
+			this.textBox_codigo.Location = new System.Drawing.Point(234, 18);
+			this.textBox_codigo.MaxLength = 20;
+			this.textBox_codigo.Name = "textBox_codigo";
+			this.textBox_codigo.Size = new System.Drawing.Size(51, 20);
+			this.textBox_codigo.TabIndex = 4;
+			this.textBox_codigo.Visible = false;
 			// 
 			// FormDescuento
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.CadetBlue;
-			this.ClientSize = new System.Drawing.Size(474, 82);
-			this.Controls.Add(this.groupBox_importe);
-			this.Controls.Add(this.groupBox_porcentaje);
+			this.ClientSize = new System.Drawing.Size(490, 81);
+			this.Controls.Add(this.textBox_codigo);
+			this.Controls.Add(this.textBox_importe);
+			this.Controls.Add(this.textBox_porcentaje);
+			this.Controls.Add(this.label_importe);
+			this.Controls.Add(this.label_porcentaje);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "FormDescuento";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Descuento";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
 			this.Load += new System.EventHandler(this.FormDescuentoLoad);
-			this.groupBox_porcentaje.ResumeLayout(false);
-			this.groupBox_porcentaje.PerformLayout();
-			this.groupBox_importe.ResumeLayout(false);
-			this.groupBox_importe.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
-		private System.Windows.Forms.TextBox textBox_importe;
-		private System.Windows.Forms.GroupBox groupBox_importe;
+		private System.Windows.Forms.TextBox textBox_codigo;
+		private System.Windows.Forms.Label label_porcentaje;
+		private System.Windows.Forms.Label label_importe;
 		private System.Windows.Forms.TextBox textBox_porcentaje;
-		private System.Windows.Forms.GroupBox groupBox_porcentaje;
+		private System.Windows.Forms.TextBox textBox_importe;
 	}
 }

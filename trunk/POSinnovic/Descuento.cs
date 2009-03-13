@@ -17,25 +17,50 @@ namespace POSinnovic
 	/// </summary>
 	public class Descuento
 	{
+		public DataGridView grilla;
+		public int		lin;							// Linea Seleccionada.
+		public string[] DesctTipo	= new string[50];	// Tipo de Descuento de la linea.
+		public string[] DesctCodigo	= new string[50];	// Codigo de la linea.
+		public int[]	DesctValor	= new int[50];		// Valor de Descuento de la linea.
+		
+		FormDescuento Desct1 = new FormDescuento();		
+		
 		public Descuento()
 		{
 		}
-		
+
 		/// <summary>
-		/// Proceso para la obtención del descuento del cliente.
+		/// Metodo para iniciar el descuento manual.
 		/// </summary>
-		/// <param name="RutCliente"> Rut Cliente.</param>
-		public bool ObtenerDstoCliente(string RutCliente){
-			bool salida = false;
-			negocio neg = new negocio();
-			neg.db      = "innpos_pos";
-			neg.user    = "innovic";
-			neg.pass    = "1nn0v1c";
-			MySqlDataReader reader = neg.select("SELECT * FROM pos_convenios where RUT='"+RutCliente+"'");
-			if (reader.Read()){
-				salida = true;
-			}
-			return salida;
+		public void Descto(){
+			// Se crea el objeto para el ingreso de descuento manual.
+			Desct1.grilla		= this.grilla;
+			Desct1.ShowDialog();
+			lin					= this.grilla.CurrentRow.Index;
+			DesctTipo[lin]		= Desct1.TipoDesct.ToString();
+			DesctCodigo[lin]	= Desct1.CodigoDesct.ToString();
+			DesctValor[lin]		= Desct1.ValorDesct;
+		}
+
+		/// <summary>
+		/// Metodo para obtener el Tipo de Descuento de la linea.
+		/// </summary>
+		public string obtenerTipo(int indice){
+			return DesctTipo[indice];
+		}
+
+		/// <summary>
+		/// Metodo para obtener el Codigo de la linea.
+		/// </summary>		
+		public string obtenerCodigo(int indice){
+			return DesctCodigo[indice];		
+		}
+
+		/// <summary>
+		/// Metodo para obtener el Valor del Descuento de la linea.
+		/// </summary>
+		public int obtenerDesct(int indice){
+			return DesctValor[indice];		
 		}
 	}
 }

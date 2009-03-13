@@ -30,6 +30,7 @@ namespace POSinnovic
 		public string pass;
 		public string port;
 		public string server;
+		Descuento Desct	= new Descuento();
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
@@ -229,13 +230,8 @@ namespace POSinnovic
 					case Keys.F4:
 						break;
 					case Keys.F5:
-						FormDescuento Desct = new FormDescuento();
-						Desct.grilla		= this.dataGridView1;
-						Desct.ShowDialog();
-						/*
-						PrsDescuento Desc = new PrsDescuento();
-						bool Descuento = Desc.ObtenerDstoCliente("14345973-2");
-						MessageBox.Show(Descuento.ToString());*/
+						Desct.grilla	= this.dataGridView1;
+						Desct.Descto();
 						break;
 					case Keys.F6:
 						break;

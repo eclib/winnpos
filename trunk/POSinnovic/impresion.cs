@@ -1,13 +1,15 @@
 /*
- * Created by SharpDevelop.
- * User: diaz60844
- * Date: 3/3/2009
- * Time: 5:40 PM
+ * Created by INNOVIC
+ * User: Eduardo Llanquileo  
+ * Date: 10/3/2009
+ * Time: 22:40 PM
  * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 
 using System;
+using MySql.Data.MySqlClient;
+using Negocio;
+using System.IO;
 
 namespace POSinnovic
 {
@@ -18,6 +20,96 @@ namespace POSinnovic
 	{
 		public impresion()
 		{
+			
 		}
+		
+		
+		
+		
+		public gentxt(negocio neg, int num_vta)
+		{
+			//Preparo Conexión
+			negocio neg = new negocio();
+			neg.db      = "innpos_pos";
+			neg.user    = "innovic";
+			neg.pass    = "1nn0v1c";
+			//Consulto por numero venta enviado - DETALLE
+			string select = "select ven.ID as id, usr.USUARIO as usr, pag.TIPO_PAGO as tip_pago ";
+			+select = "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag ";
+			+select = "where ven.NUMERO = '"+num_vta+"' ";
+			+select = "and ven.ID_USUARIO = usr.ID ";
+			+select = "and ven.NUMERO = pag.NUMERO_VENTA"";
+			MySqlDataReader reader = neg.select(select);
+			reader.Read();
+			
+			//Busco articulos vendidos con el ID del encabezado
+			string select = "select pre.DESCRIPCION desc, det.CANTIDAD as can, det.PRECIO_UNITARIO as unit, det.TOTAL as total ";
+			+select = "from pos_venta_detalle det, pos_lista_precio pre ";
+			+select = "where ID = '"+reader["id"]+"' ";
+			+select = "and det.CODIGO = pre.CODIGO ";
+			MySqlDataReader reader2 = neg.select(select);
+					
+			System.IO.StreamWriter writer;
+			writer = System.IO.File.CreateText("C:\\BOLETA.txt");
+			writer.WriteLine("    "+num_vta+"         FECHA");
+			writer.WriteLine("VENDEDOR: "+reader["usr"]);
+			writer.WriteLine("Articulo                      Cant.   P. Unit   Valor");
+			int total = 0;
+			while(reader2.read())
+			{
+				writer.WriteLine(reader2["desc"]+"     "+reader2["can"]+"  "+reader2["unit"]+"  "+reader2["total"]);
+				total = total + reader2["total"];
+			}
+			
+			writer.WriteLine("		TOTAL: "total);
+			writer.WriteLine(reader["tip_pago"]);
+			writer.WriteLine("SUCURSAL : XXXXXXXXXX Nº 00           HORA");
+			writer.Close();
+			
+			//funcion imprimir
+			if (imprimir("C:\\BOLETA.txt") == false)
+			{
+				MessageBox.Show("ERROR AL IMPRIMIR   :-S  ");
+			}
+			
+			//Como esta imprimida la boleta ahora es valida
+			remover_borrador(reader["id"], neg);
+		}
+		
+		
+		public imprimir(string ruta)
+		{
+			bool salida = false;
+			try
+			{
+				//ejecuto comando en consola
+				if (Shell("print","/d:lpt1 "+ruta))
+					salida = true;
+   			}
+			catch(System.IO.FileNotFoundException ax)
+			{
+    			MessageBox.Show(ax.Message);
+   			}
+			return salida;
+			
+		}
+		
+		//metodo para ejecutar comandos en consola
+		void Shell(string comando, string param)
+		{
+		   System.Diagnostics.Process process = new System.Diagnostics.Process(); 
+		   process.EnableRaisingEvents        = false;
+		   process.StartInfo.FileName         = comando; 
+		   process.StartInfo.Arguments        = param;   
+		   process.Start();                              
+		   process.WaitForExit();                       
+ 		 }
+		
+		public imprimir(int ID, negocio neg)
+		{
+			string update = "update pos_venta BORRADOR =' ' where ID='"+ID+"'";
+			neg.update(update);
+		}
+		
 	}
 }

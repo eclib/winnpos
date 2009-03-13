@@ -78,5 +78,13 @@ namespace POSinnovic
 				break;
 			}
 		}
+		
+		void validaTeclaNumerica(object sender, KeyPressEventArgs e)
+		{
+			if (((e.KeyChar) < 48 && e.KeyChar != 8 ) || e.KeyChar > 57){
+				MessageBox.Show("Sólo se permiten números.");
+				e.Handled = true;
+			}		
+		}
 	}
 }

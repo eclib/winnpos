@@ -1,4 +1,11 @@
-/* POSinnovic - INNOVIC 2009 */
+/*
+ * Creado por SharpDevelop.
+ * Usuario: Dario
+ * Fecha: 15-03-2009
+ * Hora: 21:06
+ * 
+ * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
+ */
 
 using System;
 using System.Drawing;
@@ -6,85 +13,47 @@ using System.Windows.Forms;
 
 namespace POSinnovic
 {
-	/// <summary>
-	/// Formulario para el ingreso de Descuento.
-	/// </summary>
 	public partial class FormDescuento : Form
 	{
-		public DataGridView grilla;
-		public int 			lin;
-		public string		TipoDesct;
-		public string		CodigoDesct;
-		public int			ValorDesct;			
+		public DataGridView Grilla;
+		public Descuentos Descuento;
+		public POS Padre;
+		private string Codigo;
 		
 		public FormDescuento()
 		{
+			//
+			// The InitializeComponent() call is required for Windows Forms designer support.
+			//
 			InitializeComponent();
+			
+			//
+			// TODO: Add constructor code after the InitializeComponent() call.
+			//
+			
+		}
+		
+		void FormDescuentoKeyDown(object sender, KeyEventArgs e)
+		{
+			switch(e.KeyCode){
+				case Keys.Enter:
+					this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+					this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+					this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+					this.Close();
+					break;
+				case Keys.Escape:
+					this.Close();
+					break;
+			
+			}
 		}
 		
 		void FormDescuentoLoad(object sender, EventArgs e)
 		{
-			lin								= this.grilla.CurrentRow.Index;
-			textBox_codigo.Text				= this.grilla.Rows[lin].Cells[1].Value.ToString();	
-			textBox_porcentaje.BackColor	= System.Drawing.Color.Silver;		
-			textBox_importe.BackColor		= System.Drawing.Color.Silver;
-			textBox_porcentaje.Enabled		= false;
-			textBox_importe.Enabled			= false;
-			textBox_porcentaje.Text			= "";
-			textBox_importe.Text			= "";
-		}
-		
-		void comandoKeyDown(object sender, KeyEventArgs e)
-		{	
-			switch(e.KeyCode){
-				case Keys.F9:	
-					textBox_importe.BackColor		= System.Drawing.Color.Silver;
-					textBox_porcentaje.BackColor	= System.Drawing.Color.White;
-					textBox_importe.Enabled			= false;
-					textBox_porcentaje.Text			= "";
-					textBox_porcentaje.Enabled		= true;
-					textBox_porcentaje.Focus();
-				break;
-				case Keys.F10:	
-					textBox_porcentaje.BackColor	= System.Drawing.Color.Silver;
-					textBox_importe.BackColor		= System.Drawing.Color.White;
-					textBox_porcentaje.Enabled		= false;
-					textBox_importe.Text			= "";
-					textBox_importe.Enabled			= true;
-					textBox_importe.Focus();
-					break;
-				case Keys.Enter:
-					if(textBox_porcentaje.Enabled == true){
-						if(textBox_porcentaje.Text != ""){
-							TipoDesct	= "Porcentaje";
-							ValorDesct	= Convert.ToInt32(textBox_porcentaje.Text.ToString());
-						}
-					}else{
-						if(textBox_importe.Enabled == true){
-							if(textBox_importe.Text != ""){
-								TipoDesct	= "Importe";
-								ValorDesct	= Convert.ToInt32(textBox_importe.Text.ToString());
-							}
-						}
-					}
-
-					CodigoDesct = textBox_codigo.Text.ToString();
-					this.Close();
-					break;
-				case Keys.Escape:	
-					this.Close();
-				break;
-				default:
-				break;
-			}
-		}
-		
-		void validaTeclaNumerica(object sender, KeyPressEventArgs e)
-		{
-			if (((e.KeyChar) < 48 && e.KeyChar != 8 ) || e.KeyChar > 57){
-				MessageBox.Show("Sólo se permiten números.");
-				e.Handled = true;
-			}		
+			this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
+			textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
+			textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
 		}
 	}
 }

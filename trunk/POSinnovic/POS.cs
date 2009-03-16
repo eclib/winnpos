@@ -30,7 +30,7 @@ namespace POSinnovic
 		public string pass;
 		public string port;
 		public string server;
-		Descuento Desct	= new Descuento();
+		Descuentos Descuentos = new Descuentos();
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
@@ -230,8 +230,11 @@ namespace POSinnovic
 					case Keys.F4:
 						break;
 					case Keys.F5:
-						Desct.grilla	= this.dataGridView1;
-						Desct.Descto();
+						FormDescuento Desct	= new FormDescuento();
+						Desct.Padre         = this;
+						Desct.Grilla	    = this.dataGridView1;
+						Desct.Descuento     = this.Descuentos;
+						Desct.Show();
 						break;
 					case Keys.F6:
 						break;
@@ -313,9 +316,16 @@ namespace POSinnovic
 			calclinea(Y);
 		}
 		
-		void calclinea(int Y){
+		public void calclinea(int Y){
 			try{
 				dataGridView1.Rows[Y].Cells[4].Value = double.Parse(dataGridView1.Rows[Y].Cells[0].Value.ToString()) * double.Parse(dataGridView1.Rows[Y].Cells[3].Value.ToString());
+				Single Valor      = Single.Parse(dataGridView1.Rows[Y].Cells[4].Value.ToString());
+				Valor -= Single.Parse(this.Descuentos.GetDesctoLineaImp(dataGridView1.Rows[Y].Cells[1].Value.ToString()).ToString());
+				string Porcentaje = this.Descuentos.GetDesctoLineaPor(dataGridView1.Rows[Y].Cells[1].Value.ToString()).ToString();
+				Single uno        = (1-(Single.Parse(Porcentaje)/100));
+				Valor             =  Valor * uno;
+				dataGridView1.Rows[Y].Cells[4].Value = Valor.ToString();
+				int x = dataGridView1.Rows.Count;
 				calctotal();
 			}catch{}
 		}

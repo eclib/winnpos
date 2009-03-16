@@ -10,9 +10,11 @@ using System;
 using MySql.Data.MySqlClient;
 using Negocio;
 using System.IO;
+using Rutinas;
 
 namespace POSinnovic
 {
+	/*
 	/// <summary>
 	/// Description of impresion.
 	/// </summary>
@@ -26,19 +28,20 @@ namespace POSinnovic
 		
 		
 		
-		public gentxt(negocio neg, int num_vta)
+		public void gentxt(negocio neg, int num_vta)
 		{
 			//Preparo Conexión
+			int pag = 0;
 			negocio neg = new negocio();
 			neg.db      = "innpos_pos";
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
 			//Consulto por numero venta enviado - DETALLE
 			string select = "select ven.ID as id, usr.USUARIO as usr, pag.TIPO_PAGO as tip_pago ";
-			+select = "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag ";
-			+select = "where ven.NUMERO = '"+num_vta+"' ";
-			+select = "and ven.ID_USUARIO = usr.ID ";
-			+select = "and ven.NUMERO = pag.NUMERO_VENTA"";
+			select = "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag ";
+			select += "where ven.NUMERO = '"+num_vta+"' ";
+			select += "and ven.ID_USUARIO = usr.ID ";
+			select += "and ven.NUMERO ="+ pag.NUMERO_VENTA;
 			MySqlDataReader reader = neg.select(select);
 			reader.Read();
 			
@@ -61,7 +64,7 @@ namespace POSinnovic
 				total = total + reader2["total"];
 			}
 			
-			writer.WriteLine("		TOTAL: "total);
+			writer.WriteLine("		TOTAL: "+total);
 			writer.WriteLine(reader["tip_pago"]);
 			writer.WriteLine("SUCURSAL : XXXXXXXXXX Nº 00           HORA");
 			writer.Close();
@@ -77,7 +80,7 @@ namespace POSinnovic
 		}
 		
 		
-		public imprimir(string ruta)
+		public void imprimir(string ruta)
 		{
 			bool salida = false;
 			try
@@ -95,7 +98,7 @@ namespace POSinnovic
 		}
 		
 		//metodo para ejecutar comandos en consola
-		void Shell(string comando, string param)
+		public bool Shell(string comando, string param)
 		{
 		   System.Diagnostics.Process process = new System.Diagnostics.Process(); 
 		   process.EnableRaisingEvents        = false;
@@ -103,13 +106,15 @@ namespace POSinnovic
 		   process.StartInfo.Arguments        = param;   
 		   process.Start();                              
 		   process.WaitForExit();                       
+		   return ( true);
  		 }
 		
-		public imprimir(int ID, negocio neg)
+		public void imprimir(int ID, negocio neg)
 		{
 			string update = "update pos_venta BORRADOR =' ' where ID='"+ID+"'";
 			neg.update(update);
 		}
 		
 	}
+	*/
 }

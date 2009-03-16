@@ -1,8 +1,8 @@
 ﻿/*
  * Creado por SharpDevelop.
- * Usuario: Administrador
- * Fecha: 12/03/2009
- * Hora: 01:23 a.m.
+ * Usuario: Dario
+ * Fecha: 15-03-2009
+ * Hora: 21:06
  * 
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
@@ -36,95 +36,66 @@ namespace POSinnovic
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label_porcentaje = new System.Windows.Forms.Label();
-			this.label_importe = new System.Windows.Forms.Label();
-			this.textBox_porcentaje = new System.Windows.Forms.TextBox();
-			this.textBox_importe = new System.Windows.Forms.TextBox();
-			this.textBox_codigo = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// label_porcentaje
+			// label1
 			// 
-			this.label_porcentaje.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label_porcentaje.ForeColor = System.Drawing.Color.Black;
-			this.label_porcentaje.Location = new System.Drawing.Point(28, 18);
-			this.label_porcentaje.Name = "label_porcentaje";
-			this.label_porcentaje.Size = new System.Drawing.Size(200, 23);
-			this.label_porcentaje.TabIndex = 0;
-			this.label_porcentaje.Text = "Porcentaje % [ F9 ]";
-			this.label_porcentaje.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.label1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(13, 13);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(134, 23);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Porcentaje ?";
 			// 
-			// label_importe
+			// label2
 			// 
-			this.label_importe.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label_importe.ForeColor = System.Drawing.Color.Black;
-			this.label_importe.Location = new System.Drawing.Point(278, 18);
-			this.label_importe.Name = "label_importe";
-			this.label_importe.Size = new System.Drawing.Size(200, 23);
-			this.label_importe.TabIndex = 1;
-			this.label_importe.Text = "Importe $ [ F10 ]";
-			this.label_importe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(12, 73);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(134, 23);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "Importe ?";
 			// 
-			// textBox_porcentaje
+			// textBox1
 			// 
-			this.textBox_porcentaje.BackColor = System.Drawing.Color.Silver;
-			this.textBox_porcentaje.Enabled = false;
-			this.textBox_porcentaje.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_porcentaje.Location = new System.Drawing.Point(12, 44);
-			this.textBox_porcentaje.MaxLength = 3;
-			this.textBox_porcentaje.Name = "textBox_porcentaje";
-			this.textBox_porcentaje.Size = new System.Drawing.Size(216, 24);
-			this.textBox_porcentaje.TabIndex = 2;
-			this.textBox_porcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaTeclaNumerica);
-			this.textBox_porcentaje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
+			this.textBox1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1.Location = new System.Drawing.Point(154, 13);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(166, 26);
+			this.textBox1.TabIndex = 2;
 			// 
-			// textBox_importe
+			// textBox2
 			// 
-			this.textBox_importe.BackColor = System.Drawing.Color.Silver;
-			this.textBox_importe.Enabled = false;
-			this.textBox_importe.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_importe.Location = new System.Drawing.Point(262, 44);
-			this.textBox_importe.MaxLength = 10;
-			this.textBox_importe.Name = "textBox_importe";
-			this.textBox_importe.Size = new System.Drawing.Size(216, 24);
-			this.textBox_importe.TabIndex = 3;
-			this.textBox_importe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaTeclaNumerica);
-			this.textBox_importe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
-			// 
-			// textBox_codigo
-			// 
-			this.textBox_codigo.Enabled = false;
-			this.textBox_codigo.Location = new System.Drawing.Point(234, 18);
-			this.textBox_codigo.MaxLength = 20;
-			this.textBox_codigo.Name = "textBox_codigo";
-			this.textBox_codigo.Size = new System.Drawing.Size(51, 20);
-			this.textBox_codigo.TabIndex = 4;
-			this.textBox_codigo.Visible = false;
+			this.textBox2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox2.Location = new System.Drawing.Point(154, 70);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(166, 26);
+			this.textBox2.TabIndex = 3;
 			// 
 			// FormDescuento
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.CadetBlue;
-			this.ClientSize = new System.Drawing.Size(490, 81);
-			this.Controls.Add(this.textBox_codigo);
-			this.Controls.Add(this.textBox_importe);
-			this.Controls.Add(this.textBox_porcentaje);
-			this.Controls.Add(this.label_importe);
-			this.Controls.Add(this.label_porcentaje);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.ClientSize = new System.Drawing.Size(366, 118);
+			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.KeyPreview = true;
 			this.Name = "FormDescuento";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Descuento";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comandoKeyDown);
+			this.Text = "Descuentos";
 			this.Load += new System.EventHandler(this.FormDescuentoLoad);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormDescuentoKeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
-		private System.Windows.Forms.TextBox textBox_codigo;
-		private System.Windows.Forms.Label label_porcentaje;
-		private System.Windows.Forms.Label label_importe;
-		private System.Windows.Forms.TextBox textBox_porcentaje;
-		private System.Windows.Forms.TextBox textBox_importe;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
 	}
 }

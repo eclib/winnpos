@@ -1,88 +1,79 @@
 /* INNOVIC */
-
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Data;
-using MySql.Data.MySqlClient; 
+using System.Collections;
 using System.Windows.Forms;
-using System.Management;
-using Negocio;
-using Rutinas;
 
 namespace POSinnovic
 {
-	/// <summary>
-	/// Objeto de Descuento.
-	/// </summary>
-	public class Descuento
+	public class Descuentos{
+		private DescuentoTotal oDCTotal = new DescuentoTotal();
+		private DescuentoLinea oDCLinea = new DescuentoLinea();
+		
+		public void addDesctoLinea(string Codigo, Int32 Valor){
+			this.oDCLinea.AddDesctoImporte(Codigo, Valor);
+		}
+
+		public void addDesctoLinea(string Codigo, Single Valor){
+			this.oDCLinea.AddDesctoPorcentaje(Codigo, Valor);
+		}
+		
+		public Int32 GetDesctoLineaImp(string Codigo){
+			return(this.oDCLinea.GetImporte (Codigo));
+		}
+		public Single GetDesctoLineaPor(string Codigo){
+			return(this.oDCLinea.GetPorcentaje(Codigo));
+		}
+		
+		public void DesctoTotal(Int32 Valor){
+			this.oDCTotal.DescuentoImporte = Valor;
+		}
+
+		public void DesctoTotal(Single Valor){
+			this.oDCTotal.DescuentoPorcentaje = Valor;
+		}
+	}
+	
+	public class DescuentoLinea
 	{
-		public DataGridView grilla;
-		public int		lin;							// Linea Seleccionada.
-		public string[] DesctTipo	= new string[50];	// Tipo de Descuento de la linea.
-		public string[] DesctCodigo	= new string[50];	// Codigo de la linea.
-		public int[]	DesctValor	= new int[50];		// Valor de Descuento de la linea.
+		private SortedList DescuentoPorcentaje = new SortedList();
+		private SortedList DescuentoImporte    = new SortedList();
 		
-		FormDescuento Desct1 = new FormDescuento();		
+		public void AddDesctoImporte( string Codigo, Int32 Valor ){
+			if(DescuentoImporte.ContainsKey(Codigo)){
+				DescuentoImporte[Codigo] = Valor;
+			}else{
+				DescuentoImporte.Add(Codigo,Valor);
+			}
+		}
+
+		public void AddDesctoPorcentaje( string Codigo, Single Valor ){
+			if(DescuentoPorcentaje.ContainsKey(Codigo)){
+				DescuentoPorcentaje[Codigo] = Valor;
+			}else{
+				DescuentoPorcentaje.Add(Codigo,Valor);
+			}
+		}
 		
-		public Descuento()
-		{
+		public Single GetPorcentaje(string Codigo){
+			Single Salida = 0;
+			if(DescuentoPorcentaje.ContainsKey(Codigo)){
+				Salida = (Single)DescuentoPorcentaje[Codigo];
+			}
+			return ( Salida );
 		}
-
-		/// <summary>
-		/// Metodo para iniciar el descuento manual.
-		/// </summary>
-		public void Descto(){
-			// Se crea el objeto para el ingreso de descuento manual.
-			Desct1.grilla		= this.grilla;
-			Desct1.ShowDialog();
-			lin					= this.grilla.CurrentRow.Index;
-			DesctTipo[lin]		= Desct1.TipoDesct.ToString();
-			DesctCodigo[lin]	= Desct1.CodigoDesct.ToString();
-			DesctValor[lin]		= Desct1.ValorDesct;
-		}
-
-		/// <summary>
-		/// Metodo para obtener el Tipo de Descuento.
-		/// </summary>
-		public string obtenerTipo(){
-			return Desct1.TipoDesct.ToString();
-		}
-
-		/// <summary>
-		/// Metodo para obtener el Codigo.
-		/// </summary>		
-		public string obtenerCodigo(){
-			return Desct1.CodigoDesct.ToString();		
-		}
-
-		/// <summary>
-		/// Metodo para obtener el Valor del Descuento.
-		/// </summary>
-		public int obtenerDesct(){
-			return Desct1.ValorDesct;		
-		}		
 		
-		
-		/// <summary>
-		/// Metodo para obtener el Tipo de Descuento de la linea.
-		/// </summary>
-		public string obtenerTipo(int indice){
-			return DesctTipo[indice];
+		public Int32 GetImporte(string Codigo){
+			Int32 Salida = 0;
+			if(DescuentoImporte.ContainsKey(Codigo)){
+				Salida = (int)DescuentoImporte[Codigo];
+			}
+			return(Salida);
 		}
+	}
 
-		/// <summary>
-		/// Metodo para obtener el Codigo de la linea.
-		/// </summary>		
-		public string obtenerCodigo(int indice){
-			return DesctCodigo[indice];		
-		}
-
-		/// <summary>
-		/// Metodo para obtener el Valor del Descuento de la linea.
-		/// </summary>
-		public int obtenerDesct(int indice){
-			return DesctValor[indice];		
-		}
+	public class DescuentoTotal
+	{
+		public Int32  DescuentoImporte    = 0;
+		public Single DescuentoPorcentaje = 0;
 	}
 }

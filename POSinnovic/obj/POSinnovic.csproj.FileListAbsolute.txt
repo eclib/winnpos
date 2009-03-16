@@ -14,3 +14,7 @@ C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSi
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Rutinas.dll
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Negocio.dll
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\MySql.Data.dll
+C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Negocio.pdb
+C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Rutinas.pdb
+C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSinnovic.ParamDsto.resources
+C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSinnovic.FormDescuento.resources

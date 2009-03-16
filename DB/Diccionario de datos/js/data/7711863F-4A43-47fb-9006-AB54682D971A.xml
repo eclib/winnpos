@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0:1", "", "WinnPOS", "EARoot/EA1.html", "175.png", "1", "0", "", "Logical diagram");
+tocTab[tocTab.length] = new Array("0:2", "", "Base de Datos Server", "EARoot/EA4.html", "99.png", "31", "0", "", "UMLDiagram");
+tocTab[tocTab.length] = new Array("0:3", "", "Base de Datos Server", "EARoot/EA5.html", "99.png", "29", "0", "", "UMLDiagram");
+tocTab[tocTab.length] = new Array("0:4", "", "Base de Datos Server", "EARoot/EA6.html", "99.png", "28", "0", "", "UMLDiagram");
+tocTab[tocTab.length] = new Array("1", "1", "Base de Datos POS", "EARoot/EA3.html", "4.png", "", "", "{A092FEBB-1E92-4320-88CF-61D12A511AF8}", "Package");
+tocTab[tocTab.length] = new Array("2", "1", "Base de Datos Server", "EARoot/EA7.html", "4.png", "", "", "{E6C9A419-B996-4828-9E3F-D3DBE06CA47B}", "Package");

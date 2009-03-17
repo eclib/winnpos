@@ -40,9 +40,9 @@ namespace POSinnovic
 		
 		public void AddDesctoImporte( string Codigo, Int32 Valor ){
 			if(DescuentoImporte.ContainsKey(Codigo)){
-				DescuentoImporte[Codigo] = Valor;
+				this.DescuentoImporte[Codigo] = Valor;
 			}else{
-				DescuentoImporte.Add(Codigo,Valor);
+				this.DescuentoImporte.Add(Codigo,Valor);
 			}
 		}
 

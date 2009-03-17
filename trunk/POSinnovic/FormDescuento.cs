@@ -10,6 +10,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace POSinnovic
 {
@@ -37,10 +39,18 @@ namespace POSinnovic
 		{
 			switch(e.KeyCode){
 				case Keys.Enter:
-					this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-					this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-					this.Padre.calclinea(this.Grilla.CurrentRow.Index);
-					this.Close();
+					if (!IsTextValidated(textBox1.Text)){
+						MessageBox.Show("Error solo se aceptan digitos numericos");
+					}else{
+						if (!IsTextValidated(textBox2.Text)){
+							MessageBox.Show("Error solo se aceptan digitos numericos");
+						}else{
+							this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+							this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+							this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+							this.Close();
+						}
+					}
 					break;
 				case Keys.Escape:
 					this.Close();
@@ -55,5 +65,10 @@ namespace POSinnovic
 			textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
 			textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
 		}
+		private bool IsTextValidated(string strTextEntry)
+        {           
+            Regex objNotWholePattern = new Regex("[^0-9]");
+            return !objNotWholePattern.IsMatch(strTextEntry);            
+        }		
 	}
 }

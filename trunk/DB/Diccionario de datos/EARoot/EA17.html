@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>pos_proveedores</title>
+<title>pos_venta_detalle</title>
 <link href="../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {
@@ -16,15 +16,15 @@ function initPage(src) {
 <body onload="initPage(this);" class="Content">
 <div class="pageHeader"></div>
 <div class="PageBody">
-	<span class="ObjectTitle">pos_proveedores  : public   &lt;&lt;table&gt;&gt; class</span>
+	<span class="ObjectTitle">pos_venta_detalle  : public   &lt;&lt;table&gt;&gt; class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">17-03-2009 10:53:57</td>
+			<td width="85%" class="ObjectDetailsValue">17-03-2009 10:53:58</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">17-03-2009 10:53:57</td>
+			<td class="ObjectDetailsValue">17-03-2009 10:53:58</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -57,7 +57,7 @@ function initPage(src) {
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{68F9D8DD-42E5-4107-9416-9560A01FBBD2}</td>
+			<td class="ObjectDetailsValue">{2C363880-0CE0-4075-83B6-249588BC79D9}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
@@ -79,11 +79,32 @@ function initPage(src) {
 			<td width="60%" class="TableHeading">Details</td>
 		</tr>
 						<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;ID_VENTA</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(20)</i><br /><strong>&nbsp;&nbsp;CODIGO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;CANTIDAD</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;PRECIO_UNITARIO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;NETO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;IVA</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;TOTAL</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;DESCUENTO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
 				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;ID</strong></td>
 				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;Ordered <br /><i>Initial:</i> NULL<br></i>property=AutoNum=1;StartNum=1;Increment=1;<br>&nbsp;</td>
-			</tr>			<tr>
-				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(50)</i><br /><strong>&nbsp;&nbsp;N_Proveedor</strong></td>
-				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i>&nbsp;</td>
 			</tr>
 		</table>
 </div><div class="ItemBody" id="OperationsTable">
@@ -95,22 +116,22 @@ function initPage(src) {
 						<tr>
 				<td width="40%" class="TableRow">
 					<i>public</i><br />
-					<strong>PK_pos_proveedores</strong>(<br />
-					<a href="#" onclick="parent.toggleData('param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}" border="0" />ID: INT</a>, 
+					<strong>PK_pos_venta_detalle</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}" border="0" />ID: INT</a>, 
 					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}00" style="display: none;">
+						<tr id="param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}00" style="display: none;">
 							<td width="50"><strong>Default:</strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}01" style="display: none;">
+						<tr id="param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}01" style="display: none;">
 							<td width="50"><strong>Kind:</strong></td>
 							<td>in</td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}02" style="display: none;">
+						<tr id="param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}02" style="display: none;">
 							<td width="50"><strong>Stereotype: </strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}03" style="display: none;">
+						<tr id="param{ADF8ABCF-6670-4b70-B8EC-CA904D199D9E}03" style="display: none;">
 							<td width="50"></td>
 							<td></td>
 						</tr>

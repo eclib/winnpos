@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>pos_proveedores</title>
+<title>pos_venta</title>
 <link href="../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {
@@ -16,7 +16,7 @@ function initPage(src) {
 <body onload="initPage(this);" class="Content">
 <div class="pageHeader"></div>
 <div class="PageBody">
-	<span class="ObjectTitle">pos_proveedores  : public   &lt;&lt;table&gt;&gt; class</span>
+	<span class="ObjectTitle">pos_venta  : public   &lt;&lt;table&gt;&gt; class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
@@ -57,7 +57,7 @@ function initPage(src) {
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{68F9D8DD-42E5-4107-9416-9560A01FBBD2}</td>
+			<td class="ObjectDetailsValue">{F7CE577C-EFE3-4160-81AC-28661A5C4D71}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
@@ -82,8 +82,32 @@ function initPage(src) {
 				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;ID</strong></td>
 				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;Ordered <br /><i>Initial:</i> NULL<br></i>property=AutoNum=1;StartNum=1;Increment=1;<br>&nbsp;</td>
 			</tr>			<tr>
-				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(50)</i><br /><strong>&nbsp;&nbsp;N_Proveedor</strong></td>
-				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i>&nbsp;</td>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;TIPO_VENTA</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;NUMERO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;USR_CAJ</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(20)</i><br /><strong>&nbsp;&nbsp;RUT_CLIENTE</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;USR_VEN</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(8)</i><br /><strong>&nbsp;&nbsp;FECHA</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(4)</i><br /><strong>&nbsp;&nbsp;HORA</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INT</i><br /><strong>&nbsp;&nbsp;VALOR_TOTAL</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> NULL<br></i>&nbsp;</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(1)</i><br /><strong>&nbsp;&nbsp;BORRADOR</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br><i>Initial:</i> '*'<br></i>&nbsp;</td>
 			</tr>
 		</table>
 </div><div class="ItemBody" id="OperationsTable">
@@ -95,22 +119,22 @@ function initPage(src) {
 						<tr>
 				<td width="40%" class="TableRow">
 					<i>public</i><br />
-					<strong>PK_pos_proveedores</strong>(<br />
-					<a href="#" onclick="parent.toggleData('param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}" border="0" />ID: INT</a>, 
+					<strong>PK_pos_venta</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{FC8CB4FB-D695-42df-AB23-2082D70C3676}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{FC8CB4FB-D695-42df-AB23-2082D70C3676}" border="0" />ID: INT</a>, 
 					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}00" style="display: none;">
+						<tr id="param{FC8CB4FB-D695-42df-AB23-2082D70C3676}00" style="display: none;">
 							<td width="50"><strong>Default:</strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}01" style="display: none;">
+						<tr id="param{FC8CB4FB-D695-42df-AB23-2082D70C3676}01" style="display: none;">
 							<td width="50"><strong>Kind:</strong></td>
 							<td>in</td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}02" style="display: none;">
+						<tr id="param{FC8CB4FB-D695-42df-AB23-2082D70C3676}02" style="display: none;">
 							<td width="50"><strong>Stereotype: </strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{27A99E0F-6807-41ee-B22D-3E98812B2FAC}03" style="display: none;">
+						<tr id="param{FC8CB4FB-D695-42df-AB23-2082D70C3676}03" style="display: none;">
 							<td width="50"></td>
 							<td></td>
 						</tr>

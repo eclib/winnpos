@@ -29,5 +29,17 @@ namespace POSinnovic
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		
+		
+		
+		void CierreVentaLoad(object sender, EventArgs e)
+		{
+			dataGridView1.Rows.Add();
+			dataGridView1.Rows.Add();
+			dataGridView1.Rows.Add();
+			dataGridView1.Rows.Add();
+			dataGridView1.Rows.Add();
+			dataGridView1.Rows.Add();
+		}
 	}
 }

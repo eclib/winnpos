@@ -18,3 +18,4 @@ C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Nego
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\bin\Debug\Rutinas.pdb
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSinnovic.ParamDsto.resources
 C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSinnovic.FormDescuento.resources
+C:\Users\Dario\Documents\SharpDevelop Projects\winnpos\POSinnovic\obj\Debug\POSinnovic.CierreVenta.resources

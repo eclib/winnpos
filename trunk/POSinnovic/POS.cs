@@ -226,6 +226,8 @@ namespace POSinnovic
 						AYG.Show();
 						break;
 					case Keys.F3:
+						CierreVenta cv = new CierreVenta();
+						cv.Show();
 						break;
 					case Keys.F4:
 						break;
@@ -241,6 +243,8 @@ namespace POSinnovic
 					case Keys.F7:
 						break;
 					case Keys.F8:
+						impresion imp = new impresion();
+						imp.gentxt(1);
 						break;
 					default:
 						try{

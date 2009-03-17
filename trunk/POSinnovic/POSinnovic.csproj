@@ -91,6 +91,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="PrsDescuento.cs" />
     <Compile Include="Terminar.cs" />
+    <EmbeddedResource Include="CierreVenta.resx">
+      <DependentUpon>CierreVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDescuento.resx">
       <DependentUpon>FormDescuento.cs</DependentUpon>
     </EmbeddedResource>

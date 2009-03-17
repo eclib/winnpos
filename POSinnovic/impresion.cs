@@ -24,11 +24,11 @@ namespace POSinnovic
 		public impresion()
 		{		
 		}
-		public void gentxt(negocio neg, int num_vta)
+		public void gentxt(int num_vta)
 		{
 			//Preparo Conexión
 			//int pag = 0;
-			//negocio neg = new negocio();
+			negocio neg = new negocio();
 			neg.db      = "innpos_pos";
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";

@@ -6,7 +6,5 @@ obj\Debug\POSinnovic.POS.resources
 obj\Debug\POSinnovic.csproj.GenerateResource.Cache
 obj\Debug\POSinnovic.exe
 obj\Debug\POSinnovic.pdb
-obj\Debug\POSinnovic.ParamDsto.resources
 obj\Debug\POSinnovic.FormDescuento.resources
-bin\Debug\Negocio.pdb
-bin\Debug\Rutinas.pdb
+obj\Debug\POSinnovic.ParamDsto.resources

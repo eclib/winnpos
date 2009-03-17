@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Management;
 using Rutinas;
+using Negocio;
 
 namespace POSinnovic
 {
@@ -24,12 +25,14 @@ namespace POSinnovic
 		public Login madre;
 		private System.Windows.Forms.TextBox textBusqueda  = new System.Windows.Forms.TextBox();
 		private bool swglobal = true;
-		private int color = 0;
+		private int color     = 0;
 		public string db;
 		public string user;
 		public string pass;
 		public string port;
 		public string server;
+		negocio negGlogal     = new negocio();
+		
 		Descuentos Descuentos = new Descuentos();
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
@@ -39,6 +42,12 @@ namespace POSinnovic
 			this.pass    = Pass;
 			this.port    = Port;
 			this.server  = Server;
+			
+			this.negGlogal.db     = Db;
+			this.negGlogal.user   = User;
+			this.negGlogal.pass   = Pass;
+			this.negGlogal.port   = Port;
+			this.negGlogal.server = Server;
 			
 			this.textBusqueda.Text="0";
 			this.textBusqueda.TextChanged += new EventHandler(this.infoCodigo);
@@ -227,6 +236,10 @@ namespace POSinnovic
 						break;
 					case Keys.F3:
 						CierreVenta cv = new CierreVenta();
+						cv.Neg         = this.negGlogal;
+						cv.dtgv        = this.dataGridView1;
+						cv.Total	   = Int32.Parse(label10.Text.Replace("$",""));
+						cv.Desc        = this.Descuentos;
 						cv.Show();
 						break;
 					case Keys.F4:
@@ -243,8 +256,6 @@ namespace POSinnovic
 					case Keys.F7:
 						break;
 					case Keys.F8:
-						impresion imp = new impresion();
-						imp.gentxt(1);
 						break;
 					default:
 						try{

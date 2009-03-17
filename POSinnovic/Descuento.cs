@@ -24,6 +24,14 @@ namespace POSinnovic
 			return(this.oDCLinea.GetPorcentaje(Codigo));
 		}
 		
+		public Int32 GetDesctoTotImp(){
+			return(	this.oDCTotal.DescuentoImporte);
+		}
+		
+		public Single GetDesctoTotPor(){
+			return(this.oDCTotal.DescuentoPorcentaje);
+		}
+		
 		public void DesctoTotal(Int32 Valor){
 			this.oDCTotal.DescuentoImporte = Valor;
 		}

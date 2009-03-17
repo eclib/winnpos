@@ -21,6 +21,8 @@ namespace POSinnovic
 		public Descuentos Descuento;
 		public POS Padre;
 		private string Codigo;
+		public CierreVenta Cierre;
+		public int Tipo;
 		
 		public FormDescuento()
 		{
@@ -45,9 +47,15 @@ namespace POSinnovic
 						if (!IsTextValidated(textBox2.Text)){
 							MessageBox.Show("Error solo se aceptan digitos numericos");
 						}else{
-							this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-							this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-							this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+							if (Tipo == 1){
+								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+							}else{
+								this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
+								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
+								this.Cierre.CalcTotal();
+							}
 							this.Close();
 						}
 					}
@@ -61,9 +69,14 @@ namespace POSinnovic
 		
 		void FormDescuentoLoad(object sender, EventArgs e)
 		{
-			this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
-			textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
-			textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
+			if (Tipo==1){
+				this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
+				textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
+				textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
+			}else{
+				textBox1.Text = this.Descuento.GetDesctoTotPor().ToString();
+				textBox2.Text = this.Descuento.GetDesctoTotImp().ToString();
+			}
 		}
 		private bool IsTextValidated(string strTextEntry)
         {           

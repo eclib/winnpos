@@ -8,3 +8,4 @@ obj\Debug\POSinnovic.exe
 obj\Debug\POSinnovic.pdb
 obj\Debug\POSinnovic.FormDescuento.resources
 obj\Debug\POSinnovic.ParamDsto.resources
+obj\Debug\POSinnovic.CierreVenta.resources

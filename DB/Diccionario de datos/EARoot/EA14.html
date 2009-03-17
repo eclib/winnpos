@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>CATEGORIAS</title>
+<title>PROVEEDORES</title>
 <link href="../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {
@@ -16,15 +16,15 @@ function initPage(src) {
 <body onload="initPage(this);" class="Content">
 <div class="pageHeader"></div>
 <div class="PageBody">
-	<span class="ObjectTitle">CATEGORIAS  : public   &lt;&lt;table&gt;&gt; class</span>
+	<span class="ObjectTitle">PROVEEDORES  : public   &lt;&lt;table&gt;&gt; class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">15-03-2009 23:44:45</td>
+			<td width="85%" class="ObjectDetailsValue">15-03-2009 23:41:34</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">15-03-2009 23:45:16</td>
+			<td class="ObjectDetailsValue">15-03-2009 23:42:22</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -57,14 +57,14 @@ function initPage(src) {
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{E60D9629-6CC9-49cd-86BA-6BACECE90F89}</td>
+			<td class="ObjectDetailsValue">{CFD77017-903A-4706-B93F-F62E86732AAF}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
 			<td class="ObjectDetailsValue"><a href="EA1.html">Base de Datos POS</a></td>
 		</tr>
 	</table>
-	<div class="ObjectDetailsNotes">Descricion de todas las categorias de articulos</div>
+	<div class="ObjectDetailsNotes">Maestro Proveedores</div>
 
 	<div class="TableGroup" id="TableGroup">
 		<ul class="ItemTitle">
@@ -79,26 +79,26 @@ function initPage(src) {
 		</tr>
 						<tr>
 				<td width="40%" class="TableRow" valign="top"><i>public static INTEGER</i><br /><strong>&nbsp;&nbsp;ID</strong></td>
-				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;Ordered <br /></i><div class="ObjectDetailsNotes"><table>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;Ordered <br /></i>property=AutoNum=1;StartNum=0;Increment=1;NotForRep=0;<br><div class="ObjectDetailsNotes"><table>
 	<tr>
 		<td valign="top">
 			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
 		</td>
 		<td>
-			ID de la categoria
+			ID proveedor
 		</td>
 	</tr>
 </table></div>
 </td>
 			</tr>			<tr>
-				<td width="40%" class="TableRow" valign="top"><i>public BIGINT</i><br /><strong>&nbsp;&nbsp;N_CATEGORIA</strong></td>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(50)</i><br /><strong>&nbsp;&nbsp;N_Proveedor</strong></td>
 				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
 	<tr>
 		<td valign="top">
 			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
 		</td>
 		<td>
-			Nombre de la categoria
+			Nombre Proveedor
 		</td>
 	</tr>
 </table></div>
@@ -114,22 +114,22 @@ function initPage(src) {
 						<tr>
 				<td width="40%" class="TableRow">
 					<i>public</i><br />
-					<strong>PK_CATEGORIAS</strong>(<br />
-					<a href="#" onclick="parent.toggleData('param{9AAA054A-2768-4901-9AF4-553C0D812A8C}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}" border="0" />ID: INTEGER</a>, 
+					<strong>PK_PROVEEDORES</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{28AE9023-B2D9-491e-B59E-45FAD91378FE}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{28AE9023-B2D9-491e-B59E-45FAD91378FE}" border="0" />ID: INTEGER</a>, 
 					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}00" style="display: none;">
+						<tr id="param{28AE9023-B2D9-491e-B59E-45FAD91378FE}00" style="display: none;">
 							<td width="50"><strong>Default:</strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}01" style="display: none;">
+						<tr id="param{28AE9023-B2D9-491e-B59E-45FAD91378FE}01" style="display: none;">
 							<td width="50"><strong>Kind:</strong></td>
 							<td>in</td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}02" style="display: none;">
+						<tr id="param{28AE9023-B2D9-491e-B59E-45FAD91378FE}02" style="display: none;">
 							<td width="50"><strong>Stereotype: </strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}03" style="display: none;">
+						<tr id="param{28AE9023-B2D9-491e-B59E-45FAD91378FE}03" style="display: none;">
 							<td width="50"></td>
 							<td></td>
 						</tr>

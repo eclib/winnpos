@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>CATEGORIAS</title>
+<title>POS_PARAMETROS</title>
 <link href="../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {
@@ -16,15 +16,15 @@ function initPage(src) {
 <body onload="initPage(this);" class="Content">
 <div class="pageHeader"></div>
 <div class="PageBody">
-	<span class="ObjectTitle">CATEGORIAS  : public   &lt;&lt;table&gt;&gt; class</span>
+	<span class="ObjectTitle">POS_PARAMETROS  : public   &lt;&lt;table&gt;&gt; class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">15-03-2009 23:44:45</td>
+			<td width="85%" class="ObjectDetailsValue">15-03-2009 23:25:03</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">15-03-2009 23:45:16</td>
+			<td class="ObjectDetailsValue">15-03-2009 23:42:29</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -57,14 +57,14 @@ function initPage(src) {
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{E60D9629-6CC9-49cd-86BA-6BACECE90F89}</td>
+			<td class="ObjectDetailsValue">{A0F6BA4E-F6DD-40fc-AA7B-10A324332302}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
 			<td class="ObjectDetailsValue"><a href="EA1.html">Base de Datos POS</a></td>
 		</tr>
 	</table>
-	<div class="ObjectDetailsNotes">Descricion de todas las categorias de articulos</div>
+	<div class="ObjectDetailsNotes">Parametros base del sistema</div>
 
 	<div class="TableGroup" id="TableGroup">
 		<ul class="ItemTitle">
@@ -78,27 +78,79 @@ function initPage(src) {
 			<td width="60%" class="TableHeading">Details</td>
 		</tr>
 						<tr>
-				<td width="40%" class="TableRow" valign="top"><i>public static INTEGER</i><br /><strong>&nbsp;&nbsp;ID</strong></td>
-				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;Ordered <br /></i><div class="ObjectDetailsNotes"><table>
-	<tr>
-		<td valign="top">
-			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
-		</td>
-		<td>
-			ID de la categoria
-		</td>
-	</tr>
-</table></div>
-</td>
-			</tr>			<tr>
-				<td width="40%" class="TableRow" valign="top"><i>public BIGINT</i><br /><strong>&nbsp;&nbsp;N_CATEGORIA</strong></td>
+				<td width="40%" class="TableRow" valign="top"><i>public DECIMAL(3,2)</i><br /><strong>&nbsp;&nbsp;IVA</strong></td>
 				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
 	<tr>
 		<td valign="top">
 			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
 		</td>
 		<td>
-			Nombre de la categoria
+			Valor del IVA
+		</td>
+	</tr>
+</table></div>
+</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public static INTEGER</i><br /><strong>&nbsp;&nbsp;N_SUCURSAL</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			Numero sucursal
+		</td>
+	</tr>
+</table></div>
+</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(50)</i><br /><strong>&nbsp;&nbsp;NO_SUCURSAL</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			Nombre Sucursal
+		</td>
+	</tr>
+</table></div>
+</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public VARCHAR(100)</i><br /><strong>&nbsp;&nbsp;DIRECCION</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			Direccion sucursal
+		</td>
+	</tr>
+</table></div>
+</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INTEGER</i><br /><strong>&nbsp;&nbsp;LISTA_PRECIO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			Numero de lista de precio a utilizar por el local
+		</td>
+	</tr>
+</table></div>
+</td>
+			</tr>			<tr>
+				<td width="40%" class="TableRow" valign="top"><i>public INTEGER</i><br /><strong>&nbsp;&nbsp;NO_DOCTO</strong></td>
+				<td width="60%" class="TableRow" valign="top"><i>&lt;&lt;column&gt;&gt;<br></i><div class="ObjectDetailsNotes"><table>
+	<tr>
+		<td valign="top">
+			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
+		</td>
+		<td>
+			Ultimo numero boleta
 		</td>
 	</tr>
 </table></div>
@@ -114,22 +166,22 @@ function initPage(src) {
 						<tr>
 				<td width="40%" class="TableRow">
 					<i>public</i><br />
-					<strong>PK_CATEGORIAS</strong>(<br />
-					<a href="#" onclick="parent.toggleData('param{9AAA054A-2768-4901-9AF4-553C0D812A8C}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}" border="0" />ID: INTEGER</a>, 
+					<strong>UQ_POS_PARAMETROS_N_SUCURSAL</strong>(<br />
+					<a href="#" onclick="parent.toggleData('param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}')" style="text-decoration: none; color: #000000;"><img src="../images/plus03.gif" align="absmiddle" id="param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}" border="0" />N_SUCURSAL: INTEGER</a>, 
 					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}00" style="display: none;">
+						<tr id="param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}00" style="display: none;">
 							<td width="50"><strong>Default:</strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}01" style="display: none;">
+						<tr id="param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}01" style="display: none;">
 							<td width="50"><strong>Kind:</strong></td>
 							<td>in</td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}02" style="display: none;">
+						<tr id="param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}02" style="display: none;">
 							<td width="50"><strong>Stereotype: </strong></td>
 							<td></td>
 						</tr>
-						<tr id="param{9AAA054A-2768-4901-9AF4-553C0D812A8C}03" style="display: none;">
+						<tr id="param{83A8F0CC-5E68-4b2d-98FE-23E15B11387A}03" style="display: none;">
 							<td width="50"></td>
 							<td></td>
 						</tr>
@@ -137,7 +189,7 @@ function initPage(src) {
 ):
 				</td>
 				<td width="60%" class="TableRow">
-					<i> &lt;&lt;PK&gt;&gt; </i>
+					<i> &lt;&lt;unique&gt;&gt; </i>
 					<table>
 						<tr>
 							<td valign = "top"><i></i><span style="margin-left: .7cm;"> </span></td>

@@ -47,10 +47,22 @@ namespace POSinnovic
 							MessageBox.Show("Error solo se aceptan digitos numericos");
 						}else{
 							if (Tipo == 2){
+								if (textBox1.Text.Trim().Equals("")){
+									textBox1.Text="0";
+								}
+								if (textBox2.Text.Trim().Equals("")){
+									textBox2.Text="0";
+								}
 								this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
 								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
 								this.Cierre.CalcTotal();
 							}else{
+								if (textBox1.Text.Trim().Equals("")){
+									textBox1.Text="0";
+								}
+								if (textBox2.Text.Trim().Equals("")){
+									textBox2.Text="0";
+								}
 								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
 								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
 								this.Padre.calclinea(this.Grilla.CurrentRow.Index);

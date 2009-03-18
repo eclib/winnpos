@@ -130,6 +130,7 @@ namespace POSinnovic
 					break;
 				case Keys.F7:
 					dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value = textBox6.Text;
+					CalcTotal();
 					break;
 				case Keys.F3:
 					impresion imp = new impresion();

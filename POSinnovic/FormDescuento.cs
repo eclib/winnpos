@@ -34,7 +34,6 @@ namespace POSinnovic
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			
 		}
 		
 		void FormDescuentoKeyDown(object sender, KeyEventArgs e)
@@ -47,14 +46,14 @@ namespace POSinnovic
 						if (!IsTextValidated(textBox2.Text)){
 							MessageBox.Show("Error solo se aceptan digitos numericos");
 						}else{
-							if (Tipo == 1){
-								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
-							}else{
+							if (Tipo == 2){
 								this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
 								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
 								this.Cierre.CalcTotal();
+							}else{
+								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
 							}
 							this.Close();
 						}
@@ -69,13 +68,13 @@ namespace POSinnovic
 		
 		void FormDescuentoLoad(object sender, EventArgs e)
 		{
-			if (Tipo==1){
+			if (Tipo==2){
+				textBox1.Text = this.Descuento.GetDesctoTotPor().ToString();
+				textBox2.Text = this.Descuento.GetDesctoTotImp().ToString();
+			}else{
 				this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
 				textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
 				textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
-			}else{
-				textBox1.Text = this.Descuento.GetDesctoTotPor().ToString();
-				textBox2.Text = this.Descuento.GetDesctoTotImp().ToString();
 			}
 		}
 		private bool IsTextValidated(string strTextEntry)

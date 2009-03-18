@@ -23,6 +23,7 @@ namespace POSinnovic
 		private string Codigo;
 		public CierreVenta Cierre;
 		public int Tipo;
+		private int varImporte;
 		
 		public FormDescuento()
 		{
@@ -46,6 +47,18 @@ namespace POSinnovic
 						if (!IsTextValidated(textBox2.Text)){
 							MessageBox.Show("Error solo se aceptan digitos numericos");
 						}else{
+							if (textBox1.Text.Trim().Equals("")){
+								textBox1.Text="0";
+							}
+							if (textBox2.Text.Trim().Equals("")){
+								textBox2.Text="0";
+							}
+							
+							if(Convert.ToSingle(textBox1.Text) < 0 || Convert.ToSingle(textBox1.Text) > 100){
+								MessageBox.Show("El Descuento debe tener un porcentaje entre 0% y 100%, intente nuevamente.");
+								return;
+							}
+							
 							if (Tipo == 2){
 								if (textBox1.Text.Trim().Equals("")){
 									textBox1.Text="0";
@@ -57,11 +70,19 @@ namespace POSinnovic
 								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
 								this.Cierre.CalcTotal();
 							}else{
+								
+								varImporte	= Convert.ToInt32(Convert.ToSingle(this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[4].Value.ToString()));
+								
 								if (textBox1.Text.Trim().Equals("")){
 									textBox1.Text="0";
 								}
 								if (textBox2.Text.Trim().Equals("")){
 									textBox2.Text="0";
+								}
+								
+								if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
+									MessageBox.Show("El Descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
+									return;
 								}
 								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
 								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));

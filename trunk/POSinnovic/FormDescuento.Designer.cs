@@ -80,16 +80,19 @@ namespace POSinnovic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.CadetBlue;
 			this.ClientSize = new System.Drawing.Size(366, 118);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.KeyPreview = true;
 			this.Name = "FormDescuento";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Descuentos";
-			this.Load += new System.EventHandler(this.FormDescuentoLoad);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormDescuentoKeyDown);
+			this.Load += new System.EventHandler(this.FormDescuentoLoad);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}

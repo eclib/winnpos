@@ -24,7 +24,7 @@ namespace POSinnovic
 		public impresion()
 		{		
 		}
-		public void gentxt(int num_vta)
+		public void gentxt(int id)
 		{
 			//Preparo Conexión
 			//int pag = 0;
@@ -33,10 +33,10 @@ namespace POSinnovic
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
 			//Consulto por numero venta enviado - DETALLE
-			string select = "select ven.FECHA as fecha, ven.HORA as hora,ven.ID as id, usr.USUARIO as usr, usr.ID as usrid, pag.TIPO_PAGO as tip_pago ";
+			string select = "select ven.FECHA as fecha, ven.HORA as hora, usr.USUARIO as usr, usr.ID as usrid, pag.TIPO_PAGO as tip_pago ";
 			select += "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag ";
-			select += "where ven.NUMERO = '"+num_vta+"' ";
-			select += "and ven.USR_CAJ = usr.ID ";
+			select += "where ven.ID = '"+id+"' ";
+			select += "and ven.USR_VEN = usr.ID ";
 			//select += "and ven.NUMERO ="+ num_vta;
 			MySqlDataReader reader = neg.select(select);
 			reader.Read();
@@ -45,7 +45,7 @@ namespace POSinnovic
 			//Busco articulos vendidos con el ID del encabezado
 			select = "select pre.DESCRIPCION as descr, det.CANTIDAD as can, det.PRECIO_UNITARIO as unit, det.TOTAL as total ";
 			select += "from pos_venta_detalle det, pos_lista_precio pre ";
-			select += "where ID_VENTA = '"+reader["id"]+"' ";
+			select += "where ID_VENTA = '"+id+"' ";
 			select += "and det.CODIGO = pre.CODIGO ";
 			MySqlDataReader reader2 = neg.select(select);
 			
@@ -56,7 +56,8 @@ namespace POSinnovic
 			System.IO.StreamWriter writer;
 			writer = System.IO.File.CreateText("C:\\BOLETA.txt");
 			string fecha = reader["fecha"].ToString();
-			writer.WriteLine("Boleta: "+String.Format("{0,-20}",num_vta)+fecha.Substring(6,2)+" "+ mes(fecha.Substring(4,2))+" "+fecha.Substring(0,4));
+			int num_bol = numero_boleta(id, neg);
+			writer.WriteLine("Boleta: "+String.Format("{0,-20}",num_bol.ToString())+fecha.Substring(6,2)+" "+ mes(fecha.Substring(4,2))+" "+fecha.Substring(0,4));
 			writer.WriteLine("VENDEDOR: "+reader["usrid"]+" "+reader["usr"]);
 			writer.WriteLine("Articulo                     Cant. P. Unit. Valor");
 			int total = 0;
@@ -80,7 +81,7 @@ namespace POSinnovic
 			}
 			
 			//Como esta imprimida la boleta ahora es valida
-			remover_borrador((int)reader["id"], neg);
+			remover_borrador(id, neg);
 		}
 		
 		
@@ -118,36 +119,48 @@ namespace POSinnovic
 			string update = "update pos_venta set BORRADOR =' ' where ID='"+ID+"'";
 			neg.update(update);
 		}
+		
+		public int numero_boleta(int ID, negocio neg)
+		{
+			string select = "select NO_DOCTO as doc from pos_parametros";
+			MySqlDataReader reader = neg.select(select);
+			reader.Read();
+			int num_doc = (int)reader["doc"] + 1;
+			string update = "update pos_parametros set NO_DOCTO = '"+num_doc+"'";
+			neg.update(update);	
+			return num_doc;
+		}
+		
 		public string mes(string n_mes)
 		{
-		switch (n_mes)
-		{
-			case "01":
-				return "Enero";
-			case "02":
-				return "Febrero";
-			case "03":
-				return "Marzo";
-			case "04":
-				return "Abril";
-			case "05":
-				return "Mayo";
-			case "06":
-				return "Junio";
-			case "07":
-				return "Julio";
-			case "08":
-				return "Agosto";
-			case "09":
-				return "Septiembre";
-			case "10":
-				return "Octubre";
-			case "11":
-				return "Noviembre";
-			case "12":
-				return "Dciembre";
-			default:
-				return "ERROR";
+			switch (n_mes)
+			{
+				case "01":
+					return "Enero";
+				case "02":
+					return "Febrero";
+				case "03":
+					return "Marzo";
+				case "04":
+					return "Abril";
+				case "05":
+					return "Mayo";
+				case "06":
+					return "Junio";
+				case "07":
+					return "Julio";
+				case "08":
+					return "Agosto";
+				case "09":
+					return "Septiembre";
+				case "10":
+					return "Octubre";
+				case "11":
+					return "Noviembre";
+				case "12":
+					return "Dciembre";
+				default:
+					return "ERROR";
 			}
 		}
 	}

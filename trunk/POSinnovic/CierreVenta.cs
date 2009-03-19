@@ -153,8 +153,8 @@ namespace POSinnovic
 			int Salida      = 0;
 			DateTime FecHoy = DateTime.Now;
 			string USR_VEN  = this.Padre.idVendedor.ToString();
-			string Fecha    = FecHoy.Year.ToString()+string.Format("{0:00}",FecHoy.Month.ToString())+string.Format("{0:00}",FecHoy.Day.ToString());
-			string Hora     = string.Format("{0:00}",FecHoy.Hour.ToString())+string.Format("{0:00}",FecHoy.Minute.ToString());
+			string Fecha    = FecHoy.Year.ToString()+string.Format("{0:00}",FecHoy.Month)+string.Format("{0:00}",FecHoy.Day);
+			string Hora     = string.Format("{0:00}",FecHoy.Hour)+string.Format("{0:00}",FecHoy.Minute);
 			string Total       = textBox4.Text;
 			// Encabezado de la Boleta //
 			string sql = "insert into pos_venta ( usr_ven, fecha, hora, valor_total) values("+USR_VEN+","+Fecha+",'"+Hora+"','"+Total+"')";

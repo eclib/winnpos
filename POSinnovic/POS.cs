@@ -233,7 +233,7 @@ namespace POSinnovic
 						if (!xdat.Trim().Equals("")){
 							Likee = " where CODIGO like'%"+xdat+"%' or DESCRIPCION like'%"+xdat+"%'";	
 						}
-						string sql = "SELECT * FROM `innpos_pos`.`pos_lista_precio` "+Likee+" ORDER BY `ID`";
+						string sql = "SELECT ID, CODIGO, DESCRIPCION, NETO FROM pos_lista_precio "+Likee+" ORDER BY `ID`";
 						AyuGen AYG  = new AyuGen(sql);
 						AYG.db      = this.db;
 						AYG.user    = this.user;
@@ -430,7 +430,7 @@ namespace POSinnovic
 						if (!xdat.Trim().Equals("")){
 							Likee = " where CODIGO like'%"+xdat+"%' or DESCRIPCION like'%"+xdat+"%'";	
 						}
-						string sql  = "SELECT * FROM pos_lista_precio "+Likee+" ORDER BY `ID`";
+						string sql = "SELECT ID, CODIGO, DESCRIPCION, NETO FROM pos_lista_precio "+Likee+" ORDER BY `ID`";
 						AyuGen AYG  = new AyuGen(sql);
 						AYG.db      = this.db;
 						AYG.user    = this.user;

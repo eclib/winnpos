@@ -56,7 +56,7 @@ namespace POSinnovic
 			System.IO.StreamWriter writer;
 			writer = System.IO.File.CreateText("C:\\BOLETA.txt");
 			string fecha = reader["fecha"].ToString();
-			int num_bol = numero_boleta(id, neg);
+			int num_bol = numero_boleta(neg);
 			writer.WriteLine("Boleta: "+String.Format("{0,-20}",num_bol.ToString())+fecha.Substring(6,2)+" "+ mes(fecha.Substring(4,2))+" "+fecha.Substring(0,4));
 			writer.WriteLine("VENDEDOR: "+reader["usrid"]+" "+reader["usr"]);
 			writer.WriteLine("Articulo                     Cant. P. Unit. Valor");
@@ -124,7 +124,7 @@ namespace POSinnovic
 			neg.update(update);
 		}
 		
-		public int numero_boleta(int ID, negocio neg)
+		public int numero_boleta(negocio neg)
 		{
 			string select = "select NO_DOCTO as doc from pos_parametros";
 			MySqlDataReader reader = neg.select(select);

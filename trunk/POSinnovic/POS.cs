@@ -37,8 +37,6 @@ namespace POSinnovic
 		
 		Descuentos Descuentos = new Descuentos();
 
-		DateTime FechaActual = DateTime.Today.AddDays(0);
-		DateTime HoraActual = DateTime.Today.AddDays(0);
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
@@ -98,8 +96,6 @@ namespace POSinnovic
 			}else{
 				this.label_vendedor.Text		= "";					
 			}
-			this.label1.Text	= FechaActual.ToShortDateString();
-			this.label2.Text	= HoraActual.ToShortTimeString();
 
 			int cont;
 			for(int i=0; i<100; i++){
@@ -464,6 +460,12 @@ namespace POSinnovic
 		void POSFormClosed(object sender, FormClosedEventArgs e)
 		{
 			this.madre.Close();
+		}
+		
+		void Timer1Tick(object sender, EventArgs e)
+		{
+			this.label1.Text	= DateTime.Now.ToShortDateString();
+			this.label2.Text	= DateTime.Now.ToShortTimeString();
 		}
 	}
 }

@@ -59,9 +59,6 @@ namespace POSinnovic
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.button8 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button6 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
@@ -223,7 +220,7 @@ namespace POSinnovic
 			// 
 			// label10
 			// 
-			this.label10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.label10.BackColor = System.Drawing.Color.Black;
 			this.label10.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label10.ForeColor = System.Drawing.Color.White;
 			this.label10.Location = new System.Drawing.Point(831, 488);
@@ -265,9 +262,6 @@ namespace POSinnovic
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.button8);
-			this.panel1.Controls.Add(this.button7);
-			this.panel1.Controls.Add(this.button6);
-			this.panel1.Controls.Add(this.button5);
 			this.panel1.Controls.Add(this.button4);
 			this.panel1.Controls.Add(this.button3);
 			this.panel1.Controls.Add(this.button2);
@@ -279,47 +273,16 @@ namespace POSinnovic
 			// 
 			// button8
 			// 
+			this.button8.BackColor = System.Drawing.Color.Black;
 			this.button8.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button8.ForeColor = System.Drawing.Color.White;
 			this.button8.Location = new System.Drawing.Point(641, 4);
 			this.button8.Name = "button8";
 			this.button8.Size = new System.Drawing.Size(85, 52);
 			this.button8.TabIndex = 31;
 			this.button8.Text = "FIN ESC";
 			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.UseVisualStyleBackColor = true;
-			// 
-			// button7
-			// 
-			this.button7.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button7.Location = new System.Drawing.Point(550, 4);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(85, 52);
-			this.button7.TabIndex = 30;
-			this.button7.Text = "OTRAS \r\nF8";
-			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.UseVisualStyleBackColor = true;
-			// 
-			// button6
-			// 
-			this.button6.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button6.Location = new System.Drawing.Point(459, 4);
-			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(85, 52);
-			this.button6.TabIndex = 29;
-			this.button6.Text = "PESA \r\nF7";
-			this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button6.UseVisualStyleBackColor = true;
-			// 
-			// button5
-			// 
-			this.button5.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button5.Location = new System.Drawing.Point(368, 4);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(85, 52);
-			this.button5.TabIndex = 28;
-			this.button5.Text = "RECOL \r\nF6";
-			this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button5.UseVisualStyleBackColor = true;
+			this.button8.UseVisualStyleBackColor = false;
 			// 
 			// button4
 			// 
@@ -335,8 +298,9 @@ namespace POSinnovic
 			// 
 			// button3
 			// 
-			this.button3.BackColor = System.Drawing.Color.Teal;
+			this.button3.BackColor = System.Drawing.Color.Black;
 			this.button3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button3.ForeColor = System.Drawing.Color.White;
 			this.button3.Location = new System.Drawing.Point(186, 4);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(85, 52);
@@ -410,9 +374,6 @@ namespace POSinnovic
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button6;
-		private System.Windows.Forms.Button button7;
 		private System.Windows.Forms.Button button8;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label12;

@@ -35,10 +35,12 @@ namespace POSinnovic
 		void Button2Click(object sender, EventArgs e)
 		{
 			ControlUsuarios CTRL = new ControlUsuarios();
-			if (CTRL.check(this.textBox1.Text,this.textBox2.Text)){
+			int id = 0;
+			if ((id = CTRL.check(this.textBox1.Text,this.textBox2.Text)) > 0){
 
 				POS FrmPOS = new POS("localhost","3306", "innovic","1nn0v1c", "innpos_pos" );
 				FrmPOS.madre = this;
+				FrmPOS.idVendedor = id;
 				FrmPOS.Show();
 				this.Visible=false;
 			}else{

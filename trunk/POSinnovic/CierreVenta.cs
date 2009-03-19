@@ -143,7 +143,9 @@ namespace POSinnovic
 		}
 		
 		private int GrabaBoletaTemporal(){
+			int Salida = 0;
 			int USR_VEN = this.Padre.idVendedor;
+			return(Salida);
 		}
 		public void CalcTotal(){
 			int largo        = dataGridView1.Rows.Count;

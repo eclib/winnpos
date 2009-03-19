@@ -39,7 +39,7 @@ namespace POSinnovic
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
-			Rutinas Rut = new Rutinas(Server, Port, User, Pass, Db);
+			Rutinas.Rutinas Rut = new Rutinas.Rutinas(Server, Port, User, Pass, Db);
 			this.db      = Db;
 			this.user    = User;
 			this.pass    = Pass;

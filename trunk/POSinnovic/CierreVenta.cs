@@ -23,7 +23,7 @@ namespace POSinnovic
 		public negocio Neg;
 		public Int32 Total;
 		public Descuentos Desc;
-
+		public POS Padre;
 		public CierreVenta()
 		{
 			//
@@ -134,12 +134,17 @@ namespace POSinnovic
 					break;
 				case Keys.F3:
 					impresion imp = new impresion();
-					imp.gentxt(1);
+					int id = GrabaBoletaTemporal();
+					imp.gentxt(id);
+					this.Close();
 					break;
 					
 			}
 		}
 		
+		private int GrabaBoletaTemporal(){
+			int USR_VEN = this.Padre.idVendedor;
+		}
 		public void CalcTotal(){
 			int largo        = dataGridView1.Rows.Count;
 			Int32 TotalPagos = 0;

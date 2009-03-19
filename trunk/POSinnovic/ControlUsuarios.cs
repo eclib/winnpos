@@ -21,28 +21,28 @@ namespace POSinnovic
 		public string usuario  = "";
 		public string password = "";
 		
-		public bool check(){
-			bool salida = false;
+		public int check(){
+			int salida = 0;
 			negocio neg = new negocio();
 			neg.db      = "innpos_pos";
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
-			MySqlDataReader reader = neg.select("select * from pos_usuario where usuario='"+this.usuario+"' and password='"+this.password+"'");
+			MySqlDataReader reader = neg.select("select id from pos_usuario where usuario='"+this.usuario+"' and password='"+this.password+"'");
 			if (reader.Read()){
-				salida = true;
+				salida = int.Parse(reader[0].ToString());
 			}
 			return salida;
 		}
 
-		public bool check(string usr, string pass){
-			bool salida = false;
+		public int check(string usr, string pass){
+			int salida = 0;
 			negocio neg = new negocio();
 			neg.db      = "innpos_pos";
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
-			MySqlDataReader reader = neg.select("select * from pos_usuario where usuario='"+usr+"' and password='"+pass+"'");
+			MySqlDataReader reader = neg.select("select id from pos_usuario where usuario='"+usr+"' and password='"+pass+"'");
 			if (reader.Read()){
-				salida = true;
+				salida = int.Parse(reader[0].ToString());
 			}
 			return salida;
 		}

@@ -31,12 +31,15 @@ namespace POSinnovic
 		public string pass;
 		public string port;
 		public string server;
+		public int idVendedor;
+		private string NombreVendedor = "";
 		negocio negGlogal     = new negocio();
 		
 		Descuentos Descuentos = new Descuentos();
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
+			Rutinas Rut = new Rutinas(Server, Port, User, Pass, Db);
 			this.db      = Db;
 			this.user    = User;
 			this.pass    = Pass;
@@ -51,6 +54,7 @@ namespace POSinnovic
 			
 			this.textBusqueda.Text="0";
 			this.textBusqueda.TextChanged += new EventHandler(this.infoCodigo);
+			this.NombreVendedor = Rut.exSQL("Select Nombre from pos_usuario where id = "+this.idVendedor.ToString());
 			
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.

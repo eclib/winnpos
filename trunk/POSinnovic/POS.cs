@@ -315,7 +315,7 @@ namespace POSinnovic
 			}
 		}
 
-		void Cancela(){
+		public void Cancela(){
 			dataGridView1.Rows.Clear();
 			this.color = 0;
 			for(int i=0; i<100; i++){
@@ -357,7 +357,7 @@ namespace POSinnovic
 			}catch{}
 		}
 
-		void calctotal(){
+		public void calctotal(){
 			int total = 0;
 			try{
 				for(int i=0; i< dataGridView1.Rows.Count; i++){

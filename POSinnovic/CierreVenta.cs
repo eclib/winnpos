@@ -136,7 +136,7 @@ namespace POSinnovic
 				case Keys.F3:
 					impresion imp = new impresion();
 					int id = GrabaBoletaTemporal();
-					imp.gentxt(id);
+					imp.gentxt(id,this.Padre, this);
 					this.Close();
 					break;
 					

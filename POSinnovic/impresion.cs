@@ -24,7 +24,7 @@ namespace POSinnovic
 		public impresion()
 		{		
 		}
-		public void gentxt(int id)
+		public void gentxt(int id, POS Padre, CierreVenta Madre)
 		{
 			//Preparo Conexión
 			//int pag = 0;
@@ -82,6 +82,10 @@ namespace POSinnovic
 			
 			//Como esta imprimida la boleta ahora es valida
 			remover_borrador(id, neg);
+			Madre.Close();
+			Padre.Cancela();
+			Padre.calctotal();
+
 		}
 		
 		

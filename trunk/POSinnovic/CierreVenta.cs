@@ -11,6 +11,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Rutinas;
 using Negocio;
 namespace POSinnovic
 {
@@ -143,8 +144,41 @@ namespace POSinnovic
 		}
 		
 		private int GrabaBoletaTemporal(){
-			int Salida = 0;
-			int USR_VEN = this.Padre.idVendedor;
+			Rutinas.Rutinas Rut = new Rutinas.Rutinas();
+			Rut.user   = this.Neg.user;
+			Rut.pass   = this.Neg.pass;
+			Rut.port   = this.Neg.port;
+			Rut.server = this.Neg.server;
+			Rut.db     = this.Neg.db;
+			int Salida      = 0;
+			DateTime FecHoy = DateTime.Now;
+			string USR_VEN  = this.Padre.idVendedor.ToString();
+			string Fecha    = FecHoy.Year.ToString()+string.Format("00",FecHoy.Month.ToString())+string.Format("00",FecHoy.Day.ToString());
+			string Hora     = string.Format("00",FecHoy.Hour.ToString())+string.Format("00",FecHoy.Minute.ToString());
+			string Total       = textBox4.Text;
+			// Encabezado de la Boleta //
+			string sql = "insert into pos_venta ( usr_ven, fecha, hora, valor_total) values("+USR_VEN+","+Fecha+",'"+Hora+"','"+Total+"')";
+			Rut.exSQL(sql);
+			sql = "Select id from pos_venta where Borrador='*'";
+			Salida = int.Parse(Rut.exSQL(sql).ToString());
+			// Detalle de la Boleta //
+			for (int i=0; i< this.dtgv.Rows.Count;i++){
+				try{
+					string Codigo = this.dtgv.Rows[i].Cells[1].Value.ToString();
+					int cantidad  = int.Parse(this.dtgv.Rows[i].Cells[0].Value.ToString());
+					int preuni    = int.Parse(this.dtgv.Rows[i].Cells[3].Value.ToString());
+					int total     = int.Parse(this.dtgv.Rows[i].Cells[4].Value.ToString());
+					int impdescto = int.Parse(this.Desc.GetDesctoLineaImp(Codigo).ToString());
+					int pordescto = int.Parse(this.Desc.GetDesctoLineaPor(Codigo).ToString());
+					int descto    = ((total - impdescto)  * ((100-pordescto)/100));
+					sql = "insert into pos_venta_detalle ( id_venta, codigo, cantidad, precio_unitario, total, descuento, importe_descuento, porcentaje_descuento) values(";
+					sql+= Salida.ToString()+",'"+Codigo+"',"+cantidad.ToString()+","+preuni.ToString()+","+total.ToString()+","+descto.ToString()+","+impdescto.ToString()+","+pordescto.ToString()+")";
+					Rut.exSQL(sql);
+				}catch(System.NullReferenceException e){
+					e.ToString();
+				}
+			}
+			
 			return(Salida);
 		}
 		public void CalcTotal(){

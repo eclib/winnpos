@@ -36,10 +36,12 @@ namespace POSinnovic
 		negocio negGlogal     = new negocio();
 		
 		Descuentos Descuentos = new Descuentos();
+
+		DateTime FechaActual = DateTime.Today.AddDays(0);
+		DateTime HoraActual = DateTime.Today.AddDays(0);
 		
 		public POS(string Server, string Port, string User, string Pass, string Db)
 		{
-			Rutinas.Rutinas Rut = new Rutinas.Rutinas(Server, Port, User, Pass, Db);
 			this.db      = Db;
 			this.user    = User;
 			this.pass    = Pass;
@@ -53,8 +55,7 @@ namespace POSinnovic
 			this.negGlogal.server = Server;
 			
 			this.textBusqueda.Text="0";
-			this.textBusqueda.TextChanged += new EventHandler(this.infoCodigo);
-			this.NombreVendedor = Rut.exSQL("Select Nombre from pos_usuario where id = "+this.idVendedor.ToString());
+			this.textBusqueda.TextChanged  += new EventHandler(this.infoCodigo);
 			
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -89,7 +90,17 @@ namespace POSinnovic
 		
 		void POSActivated(object sender, EventArgs e)
 		{
-//			groupBox1.Location = new Point(groupBox1.Location.X , this.Size.Height-54);
+			Rutinas.Rutinas Rut = new Rutinas.Rutinas(this.server, this.port, this.user, this.pass, this.db);
+			string sql = "Select Nombre from pos_usuario where id = "+this.idVendedor.ToString();
+			this.NombreVendedor				= Rut.exSQL(sql);
+			if(this.NombreVendedor.Trim() != ""){
+				this.label_vendedor.Text		= this.NombreVendedor.ToString();							
+			}else{
+				this.label_vendedor.Text		= "";					
+			}
+			this.label1.Text	= FechaActual.ToShortDateString();
+			this.label2.Text	= HoraActual.ToShortTimeString();
+
 			int cont;
 			for(int i=0; i<100; i++){
 				dataGridView1.Rows.Add();
@@ -240,10 +251,11 @@ namespace POSinnovic
 						break;
 					case Keys.F3:
 						CierreVenta cv = new CierreVenta();
-						cv.Neg         = this.negGlogal;
-						cv.dtgv        = this.dataGridView1;
-						cv.Total	   = Int32.Parse(label10.Text.Replace("$",""));
-						cv.Desc        = this.Descuentos;
+						cv.Neg		= this.negGlogal;
+						cv.dtgv		= this.dataGridView1;
+						cv.Total	= Int32.Parse(label10.Text.Replace("$",""));
+						cv.Desc		= this.Descuentos;
+						cv.Padre	= this;
 						cv.Show();
 						break;
 					case Keys.F4:

@@ -63,6 +63,7 @@ namespace POSinnovic
 			this.button3 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
+			this.label_vendedor = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -203,17 +204,17 @@ namespace POSinnovic
 			this.label7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label7.Location = new System.Drawing.Point(118, 63);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(100, 23);
+			this.label7.Size = new System.Drawing.Size(110, 20);
 			this.label7.TabIndex = 7;
-			this.label7.Text = "Vendedor";
+			this.label7.Text = "Vendedor :";
 			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// label8
 			// 
 			this.label8.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(880, 62);
+			this.label8.Location = new System.Drawing.Point(879, 63);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(100, 23);
+			this.label8.Size = new System.Drawing.Size(100, 20);
 			this.label8.TabIndex = 8;
 			this.label8.Text = "OPE";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -333,6 +334,15 @@ namespace POSinnovic
 			this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button1.UseVisualStyleBackColor = false;
 			// 
+			// label_vendedor
+			// 
+			this.label_vendedor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_vendedor.Location = new System.Drawing.Point(234, 63);
+			this.label_vendedor.Name = "label_vendedor";
+			this.label_vendedor.Size = new System.Drawing.Size(280, 20);
+			this.label_vendedor.TabIndex = 18;
+			this.label_vendedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// POS
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +350,7 @@ namespace POSinnovic
 			this.BackColor = System.Drawing.Color.CadetBlue;
 			this.ClientSize = new System.Drawing.Size(1099, 636);
 			this.ControlBox = false;
+			this.Controls.Add(this.label_vendedor);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label11);
@@ -359,9 +370,9 @@ namespace POSinnovic
 			this.Name = "POS";
 			this.Text = "POS";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.Activated += new System.EventHandler(this.POSActivated);
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.POSFormClosed);
 			this.Resize += new System.EventHandler(this.POSResize);
+			this.Activated += new System.EventHandler(this.POSActivated);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.POSKeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -369,6 +380,8 @@ namespace POSinnovic
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label_vendedor;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
@@ -389,7 +402,6 @@ namespace POSinnovic
 		private System.Windows.Forms.DataGridViewTextBoxColumn CANT;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridView dataGridView1;
 	}
 }

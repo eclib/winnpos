@@ -25,13 +25,13 @@ namespace POSinnovic
 		public Login madre;
 		private System.Windows.Forms.TextBox textBusqueda  = new System.Windows.Forms.TextBox();
 		private bool swglobal = true;
-		private int color     = 0;
 		public string db;
 		public string user;
 		public string pass;
 		public string port;
 		public string server;
 		public int idVendedor;
+		private int max = 0;
 		private string NombreVendedor = "";
 		negocio negGlogal     = new negocio();
 		
@@ -100,16 +100,10 @@ namespace POSinnovic
 			int cont;
 			for(int i=0; i<100; i++){
 				dataGridView1.Rows.Add();
+				dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells["orden"].Value = string.Format("{0:000}",999);
 				dataGridView1.Rows[dataGridView1.Rows.Count-1].HeaderCell.Value=1;
 				dataGridView1.RowHeadersVisible = false;
 				cont = dataGridView1.Rows.Count;
-				if (this.color == 0){
-					dataGridView1.Rows[cont-1].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
-					this.color = 1;
-				}else{
-					dataGridView1.Rows[cont-1].DefaultCellStyle.BackColor = Color.White;
-					this.color = 0;
-				}
 			}
 				
 		}
@@ -175,20 +169,7 @@ namespace POSinnovic
 							dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
 							calctotal();
 							dataGridView1.Rows.Add();
-							if (dataGridView1.Rows[pos1].DefaultCellStyle.BackColor == Color.White){
-								this.color = 0;
-							}else{
-								this.color = 1;
-							}
-							for (int i = pos1; i <dataGridView1.Rows.Count-1; i++){
-								if (this.color == 0){
-									dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
-									this.color = 1;
-								}else{
-									dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White;
-									this.color = 0;
-								}
-							}
+							dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells["orden"].Value = string.Format("{0:000}",999);
 						}
 						break;
 					case Keys.Down:
@@ -317,18 +298,11 @@ namespace POSinnovic
 
 		public void Cancela(){
 			dataGridView1.Rows.Clear();
-			this.color = 0;
 			for(int i=0; i<100; i++){
 				dataGridView1.Rows.Add();
+				dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells["orden"].Value = string.Format("{0:000}",999);
 				dataGridView1.Rows[dataGridView1.Rows.Count-1].HeaderCell.Value=1;
 				dataGridView1.RowHeadersVisible = false;
-				if (this.color == 0){
-					dataGridView1.Rows[dataGridView1.Rows.Count-1].DefaultCellStyle.BackColor = Color.FromArgb(220,220,220 );
-					this.color = 1;
-				}else{
-					dataGridView1.Rows[dataGridView1.Rows.Count-1].DefaultCellStyle.BackColor = Color.White;
-					this.color = 0;
-				}
 			}
 		}
 		void masuno(){
@@ -359,11 +333,18 @@ namespace POSinnovic
 
 		public void calctotal(){
 			int total = 0;
-			try{
-				for(int i=0; i< dataGridView1.Rows.Count; i++){
-					total += int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+			string paso ;
+			this.max = 0;
+			for(int i=0; i< dataGridView1.Rows.Count; i++){
+				if (dataGridView1.Rows[i].Cells[1].Value != null){
+					if (dataGridView1.Rows[i].Cells[1].Value.ToString().Trim().Equals("") == false){
+						total += int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+						paso = string.Format("{0:000}",this.max);
+						dataGridView1.Rows[i].Cells["orden"].Value = string.Format("{0:000}",this.max);
+						this.max++;
+					}
 				}
-			}catch{}
+			}
 			label10.Text = "$"+total.ToString();
 		}
 		

@@ -162,20 +162,23 @@ namespace POSinnovic
 			sql = "Select id from pos_venta where Borrador='*'";
 			Salida = int.Parse(Rut.exSQL(sql).ToString());
 			// Detalle de la Boleta //
+			this.dtgv.Sort(this.dtgv.Columns["orden"],System.ComponentModel.ListSortDirection.Ascending);
 			for (int i=0; i< this.dtgv.Rows.Count;i++){
-				try{
-					string Codigo = this.dtgv.Rows[i].Cells[1].Value.ToString();
-					int cantidad  = int.Parse(this.dtgv.Rows[i].Cells[0].Value.ToString());
-					int preuni    = int.Parse(this.dtgv.Rows[i].Cells[3].Value.ToString());
-					int total     = int.Parse(this.dtgv.Rows[i].Cells[4].Value.ToString());
-					int impdescto = int.Parse(this.Desc.GetDesctoLineaImp(Codigo).ToString());
-					int pordescto = int.Parse(this.Desc.GetDesctoLineaPor(Codigo).ToString());
-					int descto    = ((total - impdescto)  * ((100-pordescto)/100));
-					sql = "insert into pos_venta_detalle ( id_venta, codigo, cantidad, precio_unitario, total, descuento, importe_descuento, porcentaje_descuento) values(";
-					sql+= Salida.ToString()+",'"+Codigo+"',"+cantidad.ToString()+","+preuni.ToString()+","+total.ToString()+","+descto.ToString()+","+impdescto.ToString()+","+pordescto.ToString()+")";
-					Rut.exSQL(sql);
-				}catch(System.NullReferenceException e){
-					e.ToString();
+				if(this.dtgv.Rows[i].Cells[1].Value != null){
+					if(this.dtgv.Rows[i].Cells[1].Value.ToString().Trim().Equals("") == false){
+						string Codigo = this.dtgv.Rows[i].Cells[1].Value.ToString();
+						int cantidad  = int.Parse(this.dtgv.Rows[i].Cells[0].Value.ToString());
+						int preuni    = int.Parse(this.dtgv.Rows[i].Cells[3].Value.ToString());
+						int total     = int.Parse(this.dtgv.Rows[i].Cells[4].Value.ToString());
+						int impdescto = int.Parse(this.Desc.GetDesctoLineaImp(Codigo).ToString());
+						int pordescto = int.Parse(this.Desc.GetDesctoLineaPor(Codigo).ToString());
+						int descto    = ((total - impdescto)  * ((100-pordescto)/100));
+						sql = "insert into pos_venta_detalle ( id_venta, codigo, cantidad, precio_unitario, total, descuento, importe_descuento, porcentaje_descuento) values(";
+						sql+= Salida.ToString()+",'"+Codigo+"',"+cantidad.ToString()+","+preuni.ToString()+","+total.ToString()+","+descto.ToString()+","+impdescto.ToString()+","+pordescto.ToString()+")";
+						Rut.exSQL(sql);
+					}else{
+						i  = this.dtgv.Rows.Count;
+					}
 				}
 			}
 			

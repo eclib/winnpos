@@ -49,6 +49,7 @@ namespace POSinnovic
 			while(reader.Read()){
 				dataGridView1.Rows.Add();
 				dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value = reader["Descripcion"].ToString();
+				dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells["codigo"].Value = reader["id"].ToString();
 			}
 			neg.cerrar();
 			textBox1.Text = this.Total.ToString();
@@ -182,6 +183,17 @@ namespace POSinnovic
 					}
 				}
 			}
+//			pos_venta_detalle_pago			
+			for (int i=0; i< this.dataGridView1.Rows.Count;i++){
+				if(this.dataGridView1.Rows[i].Cells[1].Value != null){
+					if(this.dataGridView1.Rows[i].Cells[1].Value.ToString().Trim().Equals("") == false){
+						sql = "insert into pos_venta_detalle_pago ( id_venta, tipo_pago, valor_pagado) values(";
+						sql+= Salida.ToString()+","+this.dataGridView1.Rows[i].Cells["codigo"].Value.ToString()+","+this.dataGridView1.Rows[i].Cells[1].Value.ToString()+")";
+						Rut.exSQL(sql);
+					}
+				}
+			}
+			
 			
 			return(Salida);
 		}

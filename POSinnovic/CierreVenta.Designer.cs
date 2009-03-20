@@ -44,6 +44,8 @@ namespace POSinnovic
 			this.label5 = new System.Windows.Forms.Label();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.textBox3 = new System.Windows.Forms.TextBox();
@@ -59,8 +61,7 @@ namespace POSinnovic
 			this.button6 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
-			this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -126,7 +127,8 @@ namespace POSinnovic
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
 									this.TIPO,
-									this.VALOR});
+									this.VALOR,
+									this.codigo});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Menu;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,6 +156,24 @@ namespace POSinnovic
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellEndEdit);
 			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
+			// 
+			// TIPO
+			// 
+			this.TIPO.FillWeight = 57.32577F;
+			this.TIPO.HeaderText = "TIPO";
+			this.TIPO.Name = "TIPO";
+			this.TIPO.ReadOnly = true;
+			// 
+			// VALOR
+			// 
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+			dataGridViewCellStyle1.Format = "C0";
+			dataGridViewCellStyle1.NullValue = null;
+			this.VALOR.DefaultCellStyle = dataGridViewCellStyle1;
+			this.VALOR.FillWeight = 45.33947F;
+			this.VALOR.HeaderText = "VALOR";
+			this.VALOR.Name = "VALOR";
+			this.VALOR.ReadOnly = true;
 			// 
 			// splitContainer2
 			// 
@@ -328,23 +348,11 @@ namespace POSinnovic
 			this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button1.UseVisualStyleBackColor = false;
 			// 
-			// TIPO
+			// codigo
 			// 
-			this.TIPO.FillWeight = 57.32577F;
-			this.TIPO.HeaderText = "TIPO";
-			this.TIPO.Name = "TIPO";
-			this.TIPO.ReadOnly = true;
-			// 
-			// VALOR
-			// 
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-			dataGridViewCellStyle1.Format = "C0";
-			dataGridViewCellStyle1.NullValue = null;
-			this.VALOR.DefaultCellStyle = dataGridViewCellStyle1;
-			this.VALOR.FillWeight = 45.33947F;
-			this.VALOR.HeaderText = "VALOR";
-			this.VALOR.Name = "VALOR";
-			this.VALOR.ReadOnly = true;
+			this.codigo.HeaderText = "codigo";
+			this.codigo.Name = "codigo";
+			this.codigo.Visible = false;
 			// 
 			// CierreVenta
 			// 
@@ -372,6 +380,7 @@ namespace POSinnovic
 			this.splitContainer2.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button6;

@@ -132,23 +132,28 @@ namespace POSinnovic
 				textBox1.Text = this.Descuento.GetDesctoTotPor().ToString();
 				textBox2.Text = this.Descuento.GetDesctoTotImp().ToString();
 			}else{
-				varImporte	= Convert.ToInt16(Convert.ToSingle(this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[4].Value.ToString()));
-				
-				if (textBox1.Text.Trim().Equals("")){
-					textBox1.Text="0";
+				try{
+					varImporte	= Convert.ToInt16(Convert.ToSingle(this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[4].Value.ToString()));
+					
+					if (textBox1.Text.Trim().Equals("")){
+						textBox1.Text="0";
+					}
+					if (textBox2.Text.Trim().Equals("")){
+						textBox2.Text="0";
+					}
+					
+					if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
+						MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
+						return;
+					}
+	
+					this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
+					textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
+					textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
+				}catch(System.NullReferenceException err){
+					err.ToString();
+					this.Close();
 				}
-				if (textBox2.Text.Trim().Equals("")){
-					textBox2.Text="0";
-				}
-				
-				if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
-					MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
-					return;
-				}
-
-				this.Codigo = this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[1].Value.ToString();
-				textBox1.Text = this.Descuento.GetDesctoLineaPor(this.Codigo).ToString();
-				textBox2.Text = this.Descuento.GetDesctoLineaImp(this.Codigo).ToString();
 			}
 		}
 		private bool IsTextValidated(string strTextEntry)

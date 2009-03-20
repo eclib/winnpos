@@ -324,7 +324,7 @@ namespace POSinnovic
 				Valor -= Single.Parse(this.Descuentos.GetDesctoLineaImp(dataGridView1.Rows[Y].Cells[1].Value.ToString()).ToString());
 				string Porcentaje = this.Descuentos.GetDesctoLineaPor(dataGridView1.Rows[Y].Cells[1].Value.ToString()).ToString();
 				Single uno        = (1-(Single.Parse(Porcentaje)/100));
-				Valor             =  Valor * uno;
+				Valor             =  Convert.ToSingle(Math.Truncate((Valor * uno)+0.55)); // Redondeo a la Chilena
 				dataGridView1.Rows[Y].Cells[4].Value = Valor.ToString();
 				int x = dataGridView1.Rows.Count;
 				calctotal();

@@ -26,6 +26,7 @@ namespace POSinnovic
 		}
 		public void gentxt(int id, POS Padre, CierreVenta Madre)
 		{
+			//MessageBox.Show("ACÀ");
 			//Preparo Conexión
 			//int pag = 0;
 			negocio neg = new negocio();
@@ -57,21 +58,27 @@ namespace POSinnovic
 			writer = System.IO.File.CreateText("C:\\BOLETA.txt");
 			string fecha = reader["fecha"].ToString();
 			int num_bol = numero_boleta(neg);
-			writer.WriteLine("Boleta: "+String.Format("{0,-20}",num_bol.ToString())+fecha.Substring(6,2)+" "+ mes(fecha.Substring(4,2))+" "+fecha.Substring(0,4));
-			writer.WriteLine("VENDEDOR: "+reader["usrid"]+" "+reader["usr"]);
-			writer.WriteLine("Articulo                     Cant. P. Unit. Valor");
 			int total = 0;
 			
+			encabezado_bol (writer, fecha, num_bol,reader["usrid"].ToString(),reader["usr"].ToString());
+			int i = 0;	
 			while(reader2.Read())
 			{
-				writer.WriteLine(String.Format("{0,-20}",reader2["descr"])+String.Format("{0,-6}",reader2["can"])+String.Format("{0,-8}",reader2["unit"])+String.Format("{0,-6}",reader2["total"]));
+				writer.WriteLine(String.Format("{0,-30}",reader2["descr"])+String.Format("{0,-6}",reader2["can"])+String.Format("{0,-8}",reader2["unit"])+String.Format("{0,-6}",reader2["total"]));
 				total += (int)reader2["total"];
+				i ++;
+				if (i == 9)
+				{
+					fin_bol(writer, total, reader["tip_pago"].ToString(), reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
+					total = 0;
+					salta_linea(writer, 10);
+					num_bol = numero_boleta(neg);
+					encabezado_bol (writer, fecha, num_bol,reader["usrid"].ToString(),reader["usr"].ToString());
+					i=0;
+				}
 			}
-			
-			writer.WriteLine("                                     TOTAL: "+total);
-			writer.WriteLine("Tipo de Pago: "+reader["tip_pago"]);
-			string hora = reader["hora"].ToString();
-			writer.WriteLine(reader3["num"]+"-"+reader3["nom"]+"-"+reader3["dir"]+"  HORA: "+hora.Substring(0,2)+":"+hora.Substring(2,2));
+			salta_linea(writer, 9-i);
+			fin_bol(writer, total, reader["tip_pago"].ToString(), reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
 			writer.Close();
 			
 			//funcion imprimir
@@ -88,6 +95,26 @@ namespace POSinnovic
 
 		}
 		
+		//Imprime encabezado boleta
+		public void encabezado_bol (System.IO.StreamWriter writer, string fecha, int num_bol, string usr_id,string usr_nom)
+		{
+			writer.WriteLine("Boleta: "+String.Format("{0,-20}",num_bol)+fecha.Substring(6,2)+" "+ mes(fecha.Substring(4,2))+" "+fecha.Substring(0,4));
+			writer.WriteLine("VENDEDOR: "+usr_id+" "+usr_nom);
+			writer.WriteLine("Articulo                     Cant. P. Unit. Valor");
+		}
+		
+		//Imprime fin boleta
+		public void fin_bol (System.IO.StreamWriter writer, int total, string tipo_pago, string hora, string ven_num, string ven_nom, string direccion)
+		{
+			writer.WriteLine("                                     TOTAL: "+total);
+			writer.WriteLine("Tipo de Pago: "+tipo_pago);
+			writer.WriteLine(ven_num+"-"+ven_nom+"-"+direccion+"  HORA: "+hora.Substring(0,2)+":"+hora.Substring(2,2));
+		}
+		public void salta_linea (System.IO.StreamWriter writer, int i)
+		{
+			for (int n = 0;n <= i; n++)
+				writer.WriteLine(" ");
+		}
 		
 		public bool imprimir(string ruta)
 		{

@@ -57,7 +57,7 @@ namespace POSinnovic
 			System.IO.StreamWriter writer;
 			writer = System.IO.File.CreateText("BOLETA.txt");
 			string fecha = reader["fecha"].ToString();
-			int num_bol = numero_boleta(neg);
+			int num_bol = numero_boleta(neg, id);
 			int total = 0;
 			
 			encabezado_bol (writer, fecha, num_bol,reader["usrid"].ToString(),reader["usr"].ToString());
@@ -67,7 +67,7 @@ namespace POSinnovic
 				writer.WriteLine(String.Format("{0,-30}",reader2["descr"])+String.Format("{0,-6}",reader2["can"])+String.Format("{0,-8}",reader2["unit"])+String.Format("{0,-6}",reader2["total"]));
 				total += (int)reader2["total"];
 				i ++;
-				if (i == 9)
+				if (i == 10)
 				{
 					fin_bol(writer, total, reader["tip_pago"].ToString(), reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
 					total = 0;
@@ -82,7 +82,7 @@ namespace POSinnovic
 			writer.Close();
 			
 			//funcion imprimir
-			if (imprimir("C:\\BOLETA.txt") == false)
+			if (imprimir("BOLETA.txt") == false)
 			{
 				MessageBox.Show("ERROR AL IMPRIMIR   :-S  ");
 			}
@@ -149,6 +149,19 @@ namespace POSinnovic
 		{
 			string update = "update pos_venta set BORRADOR =' ' where ID='"+ID+"'";
 			neg.update(update);
+		}
+		
+		public int numero_boleta(negocio neg, int id)
+		{
+			string select = "select NO_DOCTO as doc from pos_parametros";
+			MySqlDataReader reader = neg.select(select);
+			reader.Read();
+			int num_doc = (int)reader["doc"] + 1;
+			string update = "update pos_parametros set NO_DOCTO = '"+num_doc+"'";
+			neg.update(update);	
+			update = "update pos_venta set NUMERO = '"+num_doc+"' where ID = '"+id+"'";
+			neg.update(update);	
+			return num_doc;
 		}
 		
 		public int numero_boleta(negocio neg)

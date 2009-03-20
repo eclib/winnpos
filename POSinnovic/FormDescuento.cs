@@ -23,6 +23,7 @@ namespace POSinnovic
 		private string Codigo;
 		public CierreVenta Cierre;
 		public int Tipo;
+		public int Limite;
 		
 		public FormDescuento()
 		{
@@ -67,9 +68,12 @@ namespace POSinnovic
 								if (textBox2.Text.Trim().Equals("")){
 									textBox2.Text="0";
 								}
+
+								
 								this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
 								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
 								this.Cierre.CalcTotal();
+								this.Close();
 							}else{
 								
 								varImporte	= Convert.ToInt16(Convert.ToSingle(this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[4].Value.ToString()));
@@ -83,13 +87,19 @@ namespace POSinnovic
 								
 								if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
 									MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
-									return;
 								}
-								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+
+								int monto1 = Int32.Parse(textBox2.Text);
+								int monto2 = Convert.ToInt32((this.Limite * (Single.Parse(textBox1.Text)/100))+(0.55));
+								if ((monto1+monto2)>Int32.Parse(textBox2.Text)){
+									MessageBox.Show("El descuento no debe superar el monto de la boleta");
+								}else{
+									this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+									this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+									this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+									this.Close();
+								}
 							}
-							this.Close();
 						}
 					}
 					break;

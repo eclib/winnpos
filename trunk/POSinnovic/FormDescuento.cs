@@ -95,12 +95,13 @@ namespace POSinnovic
 								
 								if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
 									MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
+								}else{
+									this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+									this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+									this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+									this.Close();
 								}
 
-								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
-								this.Close();
 							}
 						}
 					}

@@ -34,10 +34,10 @@ namespace POSinnovic
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
 			//Consulto por numero venta enviado - DETALLE
-			string select = "select ven.FECHA as fecha, ven.HORA as hora, usr.USUARIO as usr, usr.ID as usrid, pag.TIPO_PAGO as tip_pago ";
-			select += "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag ";
+			string select = "select ven.FECHA as fecha, ven.HORA as hora, usr.USUARIO as usr, usr.ID as usrid, fpag.CODIGO as tip_pago ";
+			select += "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag, pos_formas_pago fpag ";
 			select += "where ven.ID = '"+id+"' ";
-			select += "and ven.USR_VEN = usr.ID ";
+			select += "and ven.USR_VEN = usr.ID and pag.TIPO_PAGO = fpag.ID ";
 			//select += "and ven.NUMERO ="+ num_vta;
 			MySqlDataReader reader = neg.select(select);
 			reader.Read();
@@ -55,7 +55,7 @@ namespace POSinnovic
 			MySqlDataReader reader3 = neg.select(select);
 			reader3.Read();
 			System.IO.StreamWriter writer;
-			writer = System.IO.File.CreateText("C:\\BOLETA.txt");
+			writer = System.IO.File.CreateText("BOLETA.txt");
 			string fecha = reader["fecha"].ToString();
 			int num_bol = numero_boleta(neg);
 			int total = 0;

@@ -70,9 +70,6 @@ namespace POSinnovic
 								}
 
 								int monto1 = Int32.Parse(textBox2.Text);
-								Single a = Convert.ToSingle((Single.Parse(textBox1.Text)/100));
-								Single b = Convert.ToSingle((this.Limite * a)+0.55);
-								Single c = Convert.ToSingle(Math.Truncate(b));
 								int monto2 = Convert.ToInt32(Math.Truncate((this.Limite * (Single.Parse(textBox1.Text)/100))+(0.55)));
 								if ((monto1+monto2)>this.Limite){
 									MessageBox.Show("El descuento no debe superar el monto de la boleta");
@@ -93,7 +90,10 @@ namespace POSinnovic
 									textBox2.Text="0";
 								}
 								
-								if(Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte){
+								int monto3 = Int32.Parse(textBox2.Text);
+								int monto4 = Convert.ToInt32(Math.Truncate((varImporte * (Single.Parse(textBox1.Text)/100))+(0.55)));
+
+								if((Convert.ToInt32(textBox2.Text) < 0 || Convert.ToInt32(textBox2.Text) > varImporte) || ((monto3+monto4) > varImporte)){
 									MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
 								}else{
 									this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));

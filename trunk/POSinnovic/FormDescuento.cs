@@ -69,11 +69,19 @@ namespace POSinnovic
 									textBox2.Text="0";
 								}
 
-								
-								this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
-								this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
-								this.Cierre.CalcTotal();
-								this.Close();
+								int monto1 = Int32.Parse(textBox2.Text);
+								Single a = Convert.ToSingle((Single.Parse(textBox1.Text)/100));
+								Single b = Convert.ToSingle((this.Limite * a)+0.55);
+								Single c = Convert.ToSingle(Math.Truncate(b));
+								int monto2 = Convert.ToInt32(Math.Truncate((this.Limite * (Single.Parse(textBox1.Text)/100))+(0.55)));
+								if ((monto1+monto2)>this.Limite){
+									MessageBox.Show("El descuento no debe superar el monto de la boleta");
+								}else{
+									this.Descuento.DesctoTotal(Single.Parse(textBox1.Text));
+									this.Descuento.DesctoTotal(Int32.Parse(textBox2.Text));
+									this.Cierre.CalcTotal();
+									this.Close();
+								}
 							}else{
 								
 								varImporte	= Convert.ToInt16(Convert.ToSingle(this.Grilla.Rows[this.Grilla.CurrentRow.Index].Cells[4].Value.ToString()));
@@ -89,16 +97,10 @@ namespace POSinnovic
 									MessageBox.Show("El descuento debe tener un importe entre 0 y el costo del producto, intente nuevamente.");
 								}
 
-								int monto1 = Int32.Parse(textBox2.Text);
-								int monto2 = Convert.ToInt32((this.Limite * (Single.Parse(textBox1.Text)/100))+(0.55));
-								if ((monto1+monto2)>Int32.Parse(textBox2.Text)){
-									MessageBox.Show("El descuento no debe superar el monto de la boleta");
-								}else{
-									this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
-									this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
-									this.Padre.calclinea(this.Grilla.CurrentRow.Index);
-									this.Close();
-								}
+								this.Descuento.addDesctoLinea(this.Codigo,Single.Parse(textBox1.Text));
+								this.Descuento.addDesctoLinea(this.Codigo, Int32.Parse(textBox2.Text));
+								this.Padre.calclinea(this.Grilla.CurrentRow.Index);
+								this.Close();
 							}
 						}
 					}

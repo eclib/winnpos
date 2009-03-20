@@ -198,7 +198,7 @@ namespace POSinnovic
 				}
 			}
 			textBox3.Text = (this.Desc.GetDesctoTotImp()*-1).ToString();
-			textBox2.Text = "-"+((Single.Parse(textBox1.Text) * (this.Desc.GetDesctoTotPor()/100))+(0.55)).ToString();
+			textBox2.Text = "-"+Math.Truncate((Single.Parse(textBox1.Text) * (this.Desc.GetDesctoTotPor()/100))+(0.55)).ToString();
 			label2.Text= "Descuento   "+this.Desc.GetDesctoTotPor().ToString()+"%";
 			Total        += Convert.ToInt32( Single.Parse(textBox1.Text)+Single.Parse(textBox2.Text)+Single.Parse(textBox3.Text));
 			textBox4.Text = Total.ToString();

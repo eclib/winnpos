@@ -33,6 +33,8 @@ namespace POSinnovic
 			neg.db      = "innpos_pos";
 			neg.user    = "innovic";
 			neg.pass    = "1nn0v1c";
+			
+			string formaspago = concatFPago(id, neg);
 			//Consulto por numero venta enviado - DETALLE
 			string select = "select ven.FECHA as fecha, ven.HORA as hora, usr.USUARIO as usr, usr.ID as usrid, fpag.CODIGO as tip_pago ";
 			select += "from pos_venta ven,pos_usuario usr, pos_venta_detalle_pago pag, pos_formas_pago fpag ";
@@ -78,7 +80,9 @@ namespace POSinnovic
 				}
 			}
 			salta_linea(writer, 9-i);
-			fin_bol(writer, total, reader["tip_pago"].ToString(), reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
+
+//	fin_bol(writer, total, reader["tip_pago"].ToString(), reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
+			fin_bol(writer, total, formaspago, reader["hora"].ToString(), reader3["num"].ToString(), reader3["nom"].ToString(), reader3["dir"].ToString());
 			writer.Close();
 			
 			//funcion imprimir
@@ -93,6 +97,25 @@ namespace POSinnovic
 			Padre.Cancela();
 			Padre.calctotal();
 
+		}
+		
+		private string concatFPago(int id, negocio neg){
+			Rutinas.Rutinas rut = new Rutinas.Rutinas();
+			rut.server = neg.server;
+			rut.port   = neg.port;
+			rut.db     = neg.db;
+			rut.user   = neg.user;
+			rut.pass   = neg.pass;
+			string sql = " Select Tipo_Pago from pos_venta_detalle_pago where id_Venta = "+id.ToString();
+			string salida = "";
+			MySqlDataReader reader = neg.select(sql);
+			reader.Read();
+			while(reader.Read())
+			{
+				salida += rut.exSQL("Select CODIGO from pos_formas_pago where id="+reader["Tipo_Pago"].ToString())+" ";
+			}
+			neg.cerrar();
+			return salida;
 		}
 		
 		//Imprime encabezado boleta
